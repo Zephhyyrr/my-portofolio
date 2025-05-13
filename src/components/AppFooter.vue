@@ -36,9 +36,9 @@
   }
 
   const icons: SocialIcon[] = [
-    { icon: 'mdi-linkedin', link: 'https://linkedin.com/in/firman-ardiansyah' },
-    { icon: 'mdi-instagram', link: 'https://instagram.com/firmanardiansyah' },
-    { icon: 'mdi-github', link: 'https://github.com/firmanardiansyah' },
-    { icon: 'mdi-email', link: 'mailto:firman@example.com' },
+    { icon: 'mdi-linkedin', link: 'https://www.linkedin.com/in/firman-ardiansyah04' },
+    { icon: 'mdi-instagram', link: 'https://instagram.com/firman.ard04' },
+    { icon: 'mdi-github', link: 'https://github.com/Zephhyyrr' },
+    { icon: 'mdi-email', link: 'mailto:ardiansyahfirman2004@gmail.com' },
   ];
 </script>
