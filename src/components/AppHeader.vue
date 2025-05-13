@@ -24,9 +24,9 @@
       </div>
     </v-app-bar>
 
-    <div class="progress-container">
+    <!-- <div class="progress-container">
       <div class="progress-bar" :style="{ width: scrollProgress + '%' }"></div>
-    </div>
+    </div> -->
 
     <v-navigation-drawer v-model="drawer" temporary location="left">
       <v-list>
