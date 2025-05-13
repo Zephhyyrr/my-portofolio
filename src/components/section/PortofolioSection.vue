@@ -172,7 +172,7 @@ const projects = [
     title: "Book App",
     role: "Mobile App Developer",
     description: "Book App is an android application from api openlibrary.org. This application is built using MVVM architecture and has implemented Clean Architecture. Book App is built using kotlin xml and use modularization to separate the features.",
-    image: "https:placeholder.com/300x200",
+    image: "/images/BookApp.png",
     githubUrl: "https://github.com/Zephhyyrr/expert-submission",
     technologies: ["Kotlin", "XML", "MVVM", "Clean Architecture", "Modularization"],
   },

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="portfolio-container" fluid>
+  <v-container class="container" fluid>
     <v-row align="center">
       <v-col cols="12" md="6">
         <h1 class="gradient-text">Firman Ardiansyah</h1>
@@ -20,7 +20,6 @@
           </v-btn>
         </div>
 
-        <!-- Ikon Sosial Media -->
         <div class="social-icons mt-7 pb-5">
           <h3 style="background: linear-gradient(to right, #8e8e8e, #c0c0c0);-webkit-background-clip: text;background-clip: text; -webkit-text-fill-color: transparent;">Let's Connect With Me</h3>
           <v-btn icon href="https://www.linkedin.com/in/firman-ardiansyah04" target="_blank" class="mr-2 custom-btn-two">
@@ -87,7 +86,7 @@ onMounted(() => {
   typeEffect()
 })
 </script>
-
+<style scoped src="@/assets/styles/styles.css"></style>
 <style scoped>
 .gif-wrapper {
   width: 400px;
@@ -103,30 +102,10 @@ onMounted(() => {
   border-radius: 8px;
 }
 
-.portfolio-container {
-  padding: 2rem 1rem;
-}
-
-.gradient-text {
-  font-size: 3rem;
-  font-weight: bold;
-  background: linear-gradient(to right, #a759cf, #da62a0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-}
-
-.gradient-text-subtitle {
-  font-size: 30px;
-  font-weight: bold;
-  background: linear-gradient(to right, #8e8e8e, #c0c0c0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-  max-width: 800px;
+.animated-gif:hover{
+    border-color: #a759cf;
+    transform: scale(1.05) translateY(-8px) rotateZ(4deg);
+    cursor: pointer;
 }
 
 .cursor {
@@ -143,23 +122,4 @@ onMounted(() => {
   }
 }
 
-.custom-btn {
-  background-color: #a759cf !important;
-  color: white !important;
-  transition: background-color 0.3s ease;
-}
-
-.custom-btn:hover {
-  background-color: #da62a0 !important;
-}
-
-.custom-btn-two {
-  background-color: transparent !important;
-  color: white !important;
-  transition: background-color 0.3s ease;
-}
-
-.custom-btn-two:hover {
-  background-color: #da62a0 !important;
-}
 </style>

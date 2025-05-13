@@ -1,0 +1,51 @@
+.container {
+    padding: 2rem 1rem;
+}
+
+.gradient-text {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #a759cf, #da62a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.gradient-text-subtitle {
+    font-size: 30px;
+    font-weight: bold;
+    background: linear-gradient(to right, #8e8e8e, #c0c0c0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    max-width: 800px;
+}
+.subtitle-text{
+    background: linear-gradient(to right, #bababa, #c0c0c0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.custom-btn {
+    background-color: #a759cf !important;
+    color: white !important;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #da62a0 !important;
+}
+
+.custom-btn-two {
+    background-color: transparent !important;
+    color: white !important;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn-two:hover {
+    background-color: #da62a0 !important;
+}

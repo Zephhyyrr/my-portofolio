@@ -5,6 +5,7 @@
     <v-main>
       <v-container class="app-container">
         <HomeSection />
+        <AboutSection />
         <PortofolioSection />
       </v-container>
     </v-main>
@@ -16,6 +17,7 @@
 <script setup>
 import PortofolioSection from './components/section/PortofolioSection.vue';
 import HomeSection from './components/section/HomeSection.vue';
+import AboutSection from './components/section/AboutSection.vue';
 
 </script>
 
