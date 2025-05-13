@@ -4,6 +4,7 @@
 
     <v-main>
       <v-container class="app-container">
+        <HomeSection />
         <PortofolioSection />
       </v-container>
     </v-main>
@@ -14,8 +15,8 @@
 
 <script setup>
 import PortofolioSection from './components/section/PortofolioSection.vue';
+import HomeSection from './components/section/HomeSection.vue';
 
-// Kosongkan jika tidak ada logic
 </script>
 
 <style scoped>
