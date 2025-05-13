@@ -1,4 +1,5 @@
 <template>
+  <section id="home" class="section-container">
   <v-container class="container" fluid>
     <v-row align="center">
       <v-col cols="12" md="6">
@@ -44,6 +45,7 @@
       </v-col>
     </v-row>
   </v-container>
+  </section>
 </template>
 
 

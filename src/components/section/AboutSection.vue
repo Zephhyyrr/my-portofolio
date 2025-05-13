@@ -1,4 +1,5 @@
 <template>
+  <section id="about" class="section-container">
   <v-container class="container mb-10 mt-7" fluid>
     <h1 class="gradient-text" style="text-align: center;">About Me</h1>
     <h2 class="subtitle-text pb-7" style="text-align: center;">"Lifelong Learning, Trying to be Better"</h2>
@@ -23,6 +24,7 @@
       </v-col>
     </v-row>
   </v-container>
+  </section>
 </template>
 
 <style scoped src="@/assets/styles/styles.css"></style>

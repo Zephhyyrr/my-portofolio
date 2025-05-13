@@ -1,4 +1,5 @@
 <template>
+  <section id="portofolio" class="section-container">
   <div class="portfolio-container">
     <div class="header">
       <h1 class="gradient-text">Portfolio Showcase</h1>
@@ -132,6 +133,7 @@
       </v-card>
     </v-dialog>
   </div>
+  </section>
 </template>
 
 <script setup>
