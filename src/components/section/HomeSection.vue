@@ -29,6 +29,9 @@
           <v-btn icon href="https://github.com/Zephhyyrr" target="_blank" class="mr-2 custom-btn-two">
             <v-icon size="26" color="#ffffff">mdi-github</v-icon>
           </v-btn>
+          <v-btn icon href="https://instagram.com/firman.ard04" target="_blank" class="mr-2 custom-btn-two">
+            <v-icon size="26" color="#ffffff">mdi-instagram</v-icon>
+          </v-btn>
           <v-btn icon href="mailto:ardiansyahfirman2004@gmail.com" target="_blank" class="mr-2 custom-btn-two">
             <v-icon size="26" color="#ffffff">mdi-email</v-icon>
           </v-btn>
