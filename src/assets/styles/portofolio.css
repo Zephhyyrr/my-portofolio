@@ -1,0 +1,283 @@
+.portfolio-container {
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gradient-text {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #a759cf, #da62a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #6c757d;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background-color: rgba(167, 89, 207, 0.05);
+    border-radius: 12px;
+    padding: 0.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+    color: #6c757d;
+}
+
+.tab span {
+    margin-left: 0.5rem;
+    font-weight: 500;
+}
+
+.tab.active {
+    background: linear-gradient(to right, #a759cf, #da62a0);
+    color: white;
+    box-shadow: 0 4px 15px rgba(167, 89, 207, 0.3);
+    transform: translateY(-2px);
+}
+
+.tab-content {
+    padding: 1rem;
+    min-height: 400px;
+}
+
+/* Project Cards Styling */
+.project-card {
+    height: 100%;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    box-shadow: 0 4px 20px rgba(167, 89, 207, 0.4);
+    border-color: #a759cf;
+    transform: translateY(-8px);
+    cursor: pointer;
+}
+
+.description-text {
+    flex-grow: 1;
+}
+
+.custom-btn {
+    background-color: #a759cf;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #da62a0;
+}
+
+.demo-btn {
+    color: #a759cf;
+    transition: color 0.3s ease;
+}
+
+.demo-btn:hover {
+    color: #da62a0;
+}
+
+/* Certificate Cards Styling */
+.certificate-card {
+    height: 100%;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+}
+
+.certificate-card:hover {
+    box-shadow: 0 4px 20px rgba(167, 89, 207, 0.4);
+    border-color: #a759cf;
+    transform: translateY(-8px);
+}
+
+.certificate-img {
+    background-color: #f8f9fa;
+    object-fit: cover;
+}
+
+.credential {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.verify-btn {
+    background-color: #a759cf;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.verify-btn:hover {
+    background-color: #da62a0;
+}
+
+/* Tech Stack Styling */
+.tech-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tech-category {
+    margin-bottom: 1rem;
+}
+
+.category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    position: relative;
+    padding-left: 1rem;
+    border-left: 4px solid #a759cf;
+}
+
+.tech-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* Card Styling */
+.tech-item {
+    width: 150px; /* Atur ukuran tetap */
+    height: 180px; /* Tinggi tetap untuk keseragaman */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.tech-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(167, 89, 207, 0.2);
+}
+
+/* Icon di atas */
+.tech-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    margin-bottom: 0.75rem;
+}
+
+/* Tulisan di bawah */
+.tech-name {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Dialog Styling */
+.dialog-card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.dialog-title {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.full-description {
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.technologies-section,
+.highlights-section {
+    margin-top: 1.5rem;
+}
+
+.technology-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tech-chip {
+    background: linear-gradient(to right, #a759cf, #da62a0);
+    color: white;
+    font-weight: 500;
+}
+
+.highlights-list {
+    margin: 0.5rem 0 0 1.5rem;
+}
+
+.highlights-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.github-btn {
+    color: #333;
+}
+
+.close-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tabs-container {
+        flex-direction: column;
+        max-width: 90%;
+    }
+
+    .tab {
+        margin: 0.25rem 0;
+    }
+
+    .tech-items {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+
+    .gradient-text {
+        font-size: 2.5rem;
+    }
+}
