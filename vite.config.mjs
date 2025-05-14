@@ -1,10 +1,9 @@
-// Plugins
 import Components from 'unplugin-vue-components/vite'
 import Vue from '@vitejs/plugin-vue'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import Fonts from 'unplugin-fonts/vite'
+import react from '@vitejs/plugin-react' 
 
-// Utilities
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
@@ -14,7 +13,7 @@ export default defineConfig({
     Vue({
       template: { transformAssetUrls },
     }),
-    // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
+    react(), // Add React plugin
     Vuetify(),
     Components(),
     Fonts({
@@ -30,6 +29,7 @@ export default defineConfig({
     }),
   ],
   optimizeDeps: {
+    include: ['react', 'react-dom', '@react-three/fiber', '@react-three/drei', '@react-three/rapier'],
     exclude: ['vuetify'],
   },
   define: { 'process.env': {} },
@@ -60,4 +60,5 @@ export default defineConfig({
       },
     },
   },
+  assetsInclude: ['**/*.glb', '**/*.png'],
 })

@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div class="header-container">
+    <div class="lanyard-wrapper">
+      <LanyardWrapper />
+    </div>
+
     <v-app-bar :elevation="2" rounded>
       <template v-slot:prepend>
         <v-app-bar-nav-icon @click="drawer = !drawer" class="d-flex d-sm-none"></v-app-bar-nav-icon>
@@ -24,10 +28,6 @@
       </div>
     </v-app-bar>
 
-    <!-- <div class="progress-container">
-      <div class="progress-bar" :style="{ width: scrollProgress + '%' }"></div>
-    </div> -->
-
     <v-navigation-drawer v-model="drawer" temporary location="left">
       <v-list>
         <v-list-item v-for="(item, index) in menuItems" :key="index"
@@ -42,6 +42,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import LanyardWrapper from '../components/Lanyard/LanyardWrapper.vue';
 
 const menuItems = [
   { title: 'Home', section: 'home' },
@@ -101,6 +102,30 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.header-container {
+  position: relative;
+}
+
+/* .lanyard-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lanyard-wrapper::before {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 300px;
+  background-color: #333;
+  margin-bottom: 5px;
+} */
+
 .progress-container {
   position: fixed;
   top: 64px;
@@ -165,9 +190,19 @@ onBeforeUnmount(() => {
   font-weight: 500;
 }
 
+@media (max-width: 768px) {
+  .lanyard-wrapper {
+    left: 0;
+  }
+}
+
 @media (max-width: 600px) {
   .progress-container {
     top: 56px;
+  }
+
+  .lanyard-wrapper {
+    display: none; /* Hide on mobile if needed */
   }
 }
 </style>

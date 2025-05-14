@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <AppHeader />
-
     <v-main>
       <v-container class="app-container">
         <HomeSection />

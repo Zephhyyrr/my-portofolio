@@ -52,7 +52,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const texts = ['Mobile Developer ', 'Frontend Developer ']
+const texts = ['Mobile Developer ', 'Frontend Developer ', 'UI/UX Designer ']
 const typedText = ref('')
 let textIndex = 0
 let charIndex = 0
