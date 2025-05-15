@@ -68,7 +68,6 @@
     min-height: 400px;
 }
 
-/* Project Cards Styling */
 .project-card {
     height: 100%;
     transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
@@ -107,7 +106,6 @@
     color: #da62a0;
 }
 
-/* Certificate Cards Styling */
 .certificate-card {
     height: 100%;
     transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
@@ -142,7 +140,6 @@
     background-color: #da62a0;
 }
 
-/* Tech Stack Styling */
 .tech-categories {
     display: flex;
     flex-direction: column;
@@ -169,10 +166,9 @@
     gap: 1.5rem;
 }
 
-/* Card Styling */
 .tech-item {
-    width: 150px; /* Atur ukuran tetap */
-    height: 180px; /* Tinggi tetap untuk keseragaman */
+    width: 150px;
+    height: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -190,7 +186,6 @@
     box-shadow: 0 8px 15px rgba(167, 89, 207, 0.2);
 }
 
-/* Icon di atas */
 .tech-icon {
     width: 60px;
     height: 60px;
@@ -202,7 +197,6 @@
     margin-bottom: 0.75rem;
 }
 
-/* Tulisan di bawah */
 .tech-name {
     font-weight: 500;
     font-size: 1rem;
@@ -210,7 +204,6 @@
     margin: 0;
 }
 
-/* Dialog Styling */
 .dialog-card {
     border-radius: 12px;
     overflow: hidden;
