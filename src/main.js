@@ -1,7 +1,7 @@
 /**
  * main.js
  *
- * Bootstraps Vuetify and other plugins then mounts the App`
+ * Bootstraps Vuetify and other plugins then mounts the App
  */
 
 // Plugins
@@ -16,8 +16,17 @@ import { createApp } from 'vue'
 // Styles
 import 'unfonts.css'
 
+// Import AOS
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 const app = createApp(App)
 
 registerPlugins(app)
 
 app.mount('#app')
+
+AOS.init({
+  duration: 1000,
+  once: false,
+})

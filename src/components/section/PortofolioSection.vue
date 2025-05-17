@@ -1,138 +1,188 @@
 <template>
   <section id="portofolio" class="section-container">
-  <div class="portfolio-container">
-    <div class="header">
-      <h1 class="gradient-text">Portfolio Showcase</h1>
-      <p class="subtitle">
-        Explore my journey through projects, certifications, and technical expertise
-      </p>
-    </div>
-
-    <div class="tabs-container">
-      <div class="tab" :class="{ active: activeTab === 'projects' }" @click="activeTab = 'projects'">
-        <v-icon>mdi-code-braces</v-icon>
-        <span>Projects</span>
+    <div class="portfolio-container">
+      <!-- Header -->
+      <div class="header" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+        <h1 class="gradient-text">Portfolio Showcase</h1>
+        <p class="subtitle">
+          Explore my journey through projects, certifications, and technical expertise
+        </p>
       </div>
-      <div class="tab" :class="{ active: activeTab === 'certificates' }" @click="activeTab = 'certificates'">
-        <v-icon>mdi-certificate</v-icon>
-        <span>Certificates</span>
+
+      <!-- Tabs -->
+      <div class="tabs-container" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
+        <div class="tab" :class="{ active: activeTab === 'projects' }" @click="activeTab = 'projects'">
+          <v-icon>mdi-code-braces</v-icon>
+          <span>Projects</span>
+        </div>
+        <div class="tab" :class="{ active: activeTab === 'certificates' }" @click="activeTab = 'certificates'">
+          <v-icon>mdi-certificate</v-icon>
+          <span>Certificates</span>
+        </div>
+        <div class="tab" :class="{ active: activeTab === 'techstack' }" @click="activeTab = 'techstack'">
+          <v-icon>mdi-layers</v-icon>
+          <span>Tech Stack</span>
+        </div>
       </div>
-      <div class="tab" :class="{ active: activeTab === 'techstack' }" @click="activeTab = 'techstack'">
-        <v-icon>mdi-layers</v-icon>
-        <span>Tech Stack</span>
+
+      <!-- Projects Tab -->
+      <div v-if="activeTab === 'projects'" class="tab-content">
+        <v-row>
+          <v-col
+            v-for="(project, index) in projects"
+            :key="index"
+            cols="12"
+            sm="6"
+            md="4"
+            :data-aos="'fade-up'"
+            :data-aos-delay="100 * (index + 1)"
+            data-aos-duration="800"
+          >
+            <v-card variant="outlined" class="project-card">
+              <v-img :src="project.image" height="200px" cover></v-img>
+
+              <v-card-title>
+                {{ project.title }}
+              </v-card-title>
+
+              <v-card-subtitle>
+                Role: {{ project.role }}
+              </v-card-subtitle>
+
+              <v-card-text class="description-text">
+                {{ truncateText(project.description) }}
+              </v-card-text>
+
+              <v-card-actions>
+                <v-btn class="custom-btn" variant="tonal" @click="showProjectDetails(project)">
+                  Details
+                  <v-icon class="ml-1">mdi-arrow-right</v-icon>
+                </v-btn>
+                <v-btn
+                  v-if="project.githubUrl"
+                  class="demo-btn"
+                  variant="text"
+                  :href="project.githubUrl"
+                  target="_blank"
+                >
+                  Github Link
+                  <v-icon class="ml-1">mdi-open-in-new</v-icon>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
       </div>
-    </div>
 
-    <div v-if="activeTab === 'projects'" class="tab-content">
-      <v-row>
-        <v-col v-for="(project, index) in projects" :key="index" cols="12" sm="6" md="4">
-          <v-card variant="outlined" class="project-card">
-            <v-img :src="project.image" height="200px" cover></v-img>
+      <!-- Certificates Tab -->
+      <div v-if="activeTab === 'certificates'" class="tab-content">
+        <v-row>
+          <v-col
+            v-for="(certificate, index) in certificates"
+            :key="index"
+            cols="12"
+            sm="6"
+            md="4"
+            :data-aos="'fade-up'"
+            :data-aos-delay="100 * (index + 1)"
+            data-aos-duration="800"
+          >
+            <v-card variant="outlined" class="certificate-card">
+              <v-img :src="certificate.image" contain class="certificate-img"></v-img>
 
-            <v-card-title>
-              {{ project.title }}
-            </v-card-title>
+              <v-card-title>{{ certificate.title }}</v-card-title>
+              <v-card-subtitle>Issued by: {{ certificate.issuer }}</v-card-subtitle>
 
-            <v-card-subtitle>
-              Role: {{ project.role }}
-            </v-card-subtitle>
+              <v-card-text>
+                <p>{{ certificate.date }}</p>
+                <p class="credential" v-if="certificate.credentialId">
+                  Credential ID: {{ certificate.credentialId }}
+                </p>
+              </v-card-text>
 
-            <v-card-text class="description-text">
-              {{ truncateText(project.description) }}
-            </v-card-text>
+              <v-card-actions>
+                <v-btn
+                  v-if="certificate.verifyUrl"
+                  class="verify-btn"
+                  variant="tonal"
+                  :href="certificate.verifyUrl"
+                  target="_blank"
+                >
+                  Verify
+                  <v-icon class="ml-1">mdi-check-circle</v-icon>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </div>
 
-            <v-card-actions>
-              <v-btn class="custom-btn" variant="tonal" @click="showProjectDetails(project)">
-                Details
-                <v-icon class="ml-1">mdi-arrow-right</v-icon>
-              </v-btn>
-              <v-btn v-if="project.githubUrl" class="demo-btn" variant="text" :href="project.githubUrl" target="_blank">
-                Github Link
-                <v-icon class="ml-1">mdi-open-in-new</v-icon>
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </div>
-
-    <div v-if="activeTab === 'certificates'" class="tab-content">
-      <v-row>
-        <v-col v-for="(certificate, index) in certificates" :key="index" cols="12" sm="6" md="4">
-          <v-card variant="outlined" class="certificate-card">
-            <v-img :src="certificate.image" contain class="certificate-img"></v-img>
-
-            <v-card-title>
-              {{ certificate.title }}
-            </v-card-title>
-
-            <v-card-subtitle>
-              Issued by: {{ certificate.issuer }}
-            </v-card-subtitle>
-
-            <v-card-text>
-              <p>{{ certificate.date }}</p>
-              <p class="credential" v-if="certificate.credentialId">
-                Credential ID: {{ certificate.credentialId }}
-              </p>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn v-if="certificate.verifyUrl" class="verify-btn" variant="tonal" :href="certificate.verifyUrl"
-                target="_blank">
-                Verify
-                <v-icon class="ml-1">mdi-check-circle</v-icon>
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </div>
-
-    <div v-if="activeTab === 'techstack'" class="tab-content">
-      <div class="tech-categories">
-        <div class="tech-items">
-          <div v-for="(tech, techIndex) in techStack.items" :key="techIndex" class="tech-item">
-            <div class="tech-icon" :style="{ backgroundColor: tech.color || '#a759cf20' }">
-              <v-icon size="x-large" :color="tech.iconColor || '#a759cf'">{{ tech.icon }}</v-icon>
+      <!-- Tech Stack Tab -->
+      <div v-if="activeTab === 'techstack'" class="tab-content">
+        <div class="tech-categories" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+          <div class="tech-items">
+            <div
+              v-for="(tech, techIndex) in techStack.items"
+              :key="techIndex"
+              class="tech-item"
+              :data-aos="'zoom-in'"
+              :data-aos-delay="100 + techIndex * 100"
+            >
+              <div
+                class="tech-icon"
+                :style="{ backgroundColor: tech.color || '#a759cf20' }"
+              >
+                <v-icon size="x-large" :color="tech.iconColor || '#a759cf'">{{ tech.icon }}</v-icon>
+              </div>
+              <span class="tech-name">{{ tech.name }}</span>
             </div>
-            <span class="tech-name">{{ tech.name }}</span>
           </div>
         </div>
       </div>
-    </div>
 
-    <v-dialog v-model="dialogVisible" max-width="800px">
-      <v-card v-if="selectedProject" class="dialog-card">
-        <v-img :src="selectedProject.image" height="250px" cover></v-img>
-        <v-card-title class="dialog-title">{{ selectedProject.title }}</v-card-title>
-        <v-card-subtitle>Role: {{ selectedProject.role }}</v-card-subtitle>
-        <v-card-text>
-          <p class="full-description">{{ selectedProject.description }}</p>
-          <div v-if="selectedProject.technologies && selectedProject.technologies.length > 0"
-            class="technologies-section">
-            <h3>Technologies Used:</h3>
-            <div class="technology-tags">
-              <v-chip v-for="(tech, techIndex) in selectedProject.technologies" :key="techIndex" class="tech-chip">
-                {{ tech }}
-              </v-chip>
+      <!-- Dialog for Project Details -->
+      <v-dialog v-model="dialogVisible" max-width="800px">
+        <v-card v-if="selectedProject" class="dialog-card">
+          <v-img :src="selectedProject.image" height="250px" cover></v-img>
+          <v-card-title class="dialog-title">{{ selectedProject.title }}</v-card-title>
+          <v-card-subtitle>Role: {{ selectedProject.role }}</v-card-subtitle>
+          <v-card-text>
+            <p class="full-description">{{ selectedProject.description }}</p>
+            <div
+              v-if="selectedProject.technologies && selectedProject.technologies.length > 0"
+              class="technologies-section"
+            >
+              <h3>Technologies Used:</h3>
+              <div class="technology-tags">
+                <v-chip
+                  v-for="(tech, techIndex) in selectedProject.technologies"
+                  :key="techIndex"
+                  class="tech-chip"
+                >
+                  {{ tech }}
+                </v-chip>
+              </div>
             </div>
-          </div>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn v-if="selectedProject.githubUrl" class="demo-btn" variant="text" :href="selectedProject.githubUrl"
-            target="_blank">
-            Github Link
-            <v-icon class="ml-1">mdi-open-in-new</v-icon>
-          </v-btn>
-          <v-btn class="close-btn" variant="tonal" @click="dialogVisible = false">
-            Close
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </div>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              v-if="selectedProject.githubUrl"
+              class="demo-btn"
+              variant="text"
+              :href="selectedProject.githubUrl"
+              target="_blank"
+            >
+              Github Link
+              <v-icon class="ml-1">mdi-open-in-new</v-icon>
+            </v-btn>
+            <v-btn class="close-btn" variant="tonal" @click="dialogVisible = false">
+              Close
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
   </section>
 </template>
 

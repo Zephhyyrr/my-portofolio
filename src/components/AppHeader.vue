@@ -3,7 +3,9 @@
     <div class="lanyard-wrapper">
       <LanyardWrapper />
     </div>
-
+    <div class="progress-container">
+      <div class="progress-bar" :style="{ width: scrollProgress + '%' }"></div>
+    </div>
     <v-app-bar :elevation="2" rounded>
       <template v-slot:prepend>
         <v-app-bar-nav-icon @click="drawer = !drawer" class="d-flex d-sm-none"></v-app-bar-nav-icon>
@@ -106,26 +108,6 @@ onBeforeUnmount(() => {
   position: relative;
 }
 
-/* .lanyard-wrapper {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1000;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.lanyard-wrapper::before {
-  content: '';
-  display: block;
-  width: 2px;
-  height: 300px;
-  background-color: #333;
-  margin-bottom: 5px;
-} */
-
 .progress-container {
   position: fixed;
   top: 64px;
@@ -202,7 +184,8 @@ onBeforeUnmount(() => {
   }
 
   .lanyard-wrapper {
-    display: none; /* Hide on mobile if needed */
+    display: none;
+    /* Hide on mobile if needed */
   }
 }
 </style>
