@@ -59,7 +59,7 @@
                 src="/foto_firman.png"
                 alt="Foto Firman"
                 class="profile-photo"
-                data-aos="flip-up"
+                data-aos="zoom-out-down"
                 data-aos-delay="500"
                 data-aos-duration="1000"
               />
