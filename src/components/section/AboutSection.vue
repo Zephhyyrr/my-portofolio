@@ -18,7 +18,7 @@
         data-aos-delay="200"
         data-aos-duration="800"
       >
-        "Lifelong Learning, Trying to be Better"
+        "Lifelong Learner, Trying to be Better"
       </h2>
 
       <v-row align="center">
