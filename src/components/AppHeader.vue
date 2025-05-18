@@ -179,13 +179,8 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 600px) {
-  .progress-container {
-    top: 56px;
-  }
-
   .lanyard-wrapper {
     display: none;
-    /* Hide on mobile if needed */
   }
 }
 </style>
