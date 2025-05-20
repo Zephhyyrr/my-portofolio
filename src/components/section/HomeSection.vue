@@ -137,7 +137,7 @@ function typeEffect() {
     setTimeout(() => {
       isDeleting = true
       typeEffect()
-    }, 1000)
+    },3000)
     return
   }
 
