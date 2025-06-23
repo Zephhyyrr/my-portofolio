@@ -162,6 +162,11 @@ onMounted(() => {
   margin: 0 auto;
 }
 
+.gif-wrapper:hover {
+  transform: scale(1.05) translateY(-8px) rotateZ(4deg);
+  transition: transform 0.3s ease-in-out;
+}
+
 .animated-gif {
   width: 100%;
   height: 100%;
