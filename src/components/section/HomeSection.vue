@@ -37,7 +37,7 @@
               class="custom-btn mr-3"
               variant="tonal"
               color="primary"
-              href="https://drive.google.com/file/d/1XNcYCPg61dim3EiTpWwewGLOJJykhiGR/view?usp=sharing"
+              href="https://drive.google.com/file/d/1Vn9o7Wi1OzMErVm0wtWxQGOT0WzkGlb1/view?usp=drive_link"
               target="_blank"
             >
               My Resume
@@ -48,7 +48,7 @@
               class="custom-btn-two"
               variant="tonal"
               color="primary"
-              href="https://drive.google.com/file/d/1j9tz1XAvPYM5PFyhDzGH7Hdx0obZbV9Y/view?usp=sharing"
+              href="https://drive.google.com/file/d/1lbILlBPvyoNXWHwposzlLYQzOCFC2327/view?usp=sharing"
               target="_blank"
             >
               My Portfolio
