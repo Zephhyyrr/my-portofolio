@@ -27,7 +27,7 @@
 
       <!-- Projects Tab -->
       <div v-if="activeTab === 'projects'" class="tab-content">
-        <v-row>
+        <v-row justify="center">
           <v-col
             v-for="(project, index) in projects"
             :key="index"
@@ -196,7 +196,7 @@ const selectedProject = ref(null);
 // Projects data
 const projects = [
   {
-    title: "UrVoice App (On-Going Project)",
+    title: "UrVoice App",
     role: "Mobile App Developer, UI/UX Designer",
     description: "UrVoice App is an application with the aim of improving public speaking in English through grammar correction. UrVoice App uses Whisper AI to convert speech-to-text and a locally executed Meta LLAMA 3.2 1B-Instruct model using python's Transformers library to analyze grammar errors. UrVoice App is built using Jetpack Compose with MVVM clean architecture.",
     image: "/images/UrVoiceApp.png",
@@ -204,13 +204,20 @@ const projects = [
     technologies: ["Kotlin", "Jetpack Compose", "MVVM", "Clean Architecture", "Figma"],
   },
   {
-    title: "UrVoice Backend (On-Going Project)",
+    title: "UrVoice Backend",
     role: "Backend Developer",
     description: "UrVoice Backend is the backend component of the UrVoice application. It is built using Express.js and TypeScript, with PostgreSQL as the database managed through Prisma ORM as the main API. In addition, the backend also integrates a grammar analysis service developed using Flask, which interacts locally with the LLAMA Meta model.",
     image: "/images/UrVoiceBackend.png",
     githubUrl: "https://github.com/Zephhyyrr/Capstone-Project-Backend",
     technologies: ["Express.js", "TypeScript", "PostgreSQL", "Prisma ORM", "Flask", "Postman"],
-
+  },
+  {
+    title: "Ignite Step",
+    role: "Backend Developer",
+    description: "This is my final project for the 6th semester in the Special Topics course. Ignite Step is a website application for selling shoes catalog. I served as the backend developer, utilizing Express.js with a PostgreSQL database, employing Redis for caching, and Elasticsearch for product search functionality.",
+    image: "/images/IgniteStep.png",
+    githubUrl: "https://github.com/Baghaztra-Van-Ril/backend-2",
+    technologies: ["Express.js", "PostgreSQL", "Redis", "Elasticsearch", "TypeScript"],
   },
   {
     title: "DermaSeer App",
