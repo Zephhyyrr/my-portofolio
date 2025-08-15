@@ -37,7 +37,7 @@
               class="custom-btn mr-3"
               variant="tonal"
               color="primary"
-              href="https://drive.google.com/file/d/1AXDGmHGXUS4P_f7TxnMDkO8cXwvdGuDx/view?usp=sharing"
+              href="https://drive.google.com/file/d/1hBI47bZaVeKaNvOdRi9j49C8iIW0g8AD/view?usp=sharing"
               target="_blank"
             >
               My Resume
