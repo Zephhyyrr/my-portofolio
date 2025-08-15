@@ -1,5 +1,5 @@
 <template>
-  <section id="comments" class="section-container pb-" style="text-align: left;" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+  <section id="comments" class="section-container pb-8" style="text-align: left;" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
       <v-card class="comment-card" elevation="0">
         <v-card-title class="comment-header">
           <v-icon class="me-2" color="primary">mdi-comment-multiple</v-icon>
