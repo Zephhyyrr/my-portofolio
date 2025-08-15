@@ -6,6 +6,7 @@
         <HomeSection />
         <AboutSection />
         <PortofolioSection />
+        <MessageSection />
       </v-container>
     </v-main>
 
@@ -17,6 +18,7 @@
 import PortofolioSection from './components/section/PortofolioSection.vue';
 import HomeSection from './components/section/HomeSection.vue';
 import AboutSection from './components/section/AboutSection.vue';
+import MessageSection from './components/section/MessageSection.vue';
 
 </script>
 

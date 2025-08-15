@@ -1,7 +1,6 @@
 <template>
   <section id="portofolio" class="section-container">
     <div class="portfolio-container">
-      <!-- Header -->
       <div class="header" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
         <h1 class="gradient-text">Portfolio Showcase</h1>
         <p class="subtitle">
@@ -9,7 +8,6 @@
         </p>
       </div>
 
-      <!-- Tabs -->
       <div class="tabs-container" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
         <div class="tab" :class="{ active: activeTab === 'projects' }" @click="activeTab = 'projects'">
           <v-icon>mdi-code-braces</v-icon>

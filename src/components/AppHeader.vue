@@ -49,7 +49,8 @@ import LanyardWrapper from '../components/Lanyard/LanyardWrapper.vue';
 const menuItems = [
   { title: 'Home', section: 'home' },
   { title: 'About', section: 'about' },
-  { title: 'Portofolio', section: 'portofolio' }
+  { title: 'Portofolio', section: 'portofolio' },
+  { title: 'Comments', section:"comments"}
 ];
 
 const activeSection = ref('home');
@@ -76,7 +77,7 @@ const calculateScrollProgress = () => {
 };
 
 const handleScroll = () => {
-  const sections = ['home', 'about', 'portofolio'];
+  const sections = ['home', 'about', 'portofolio', 'comments'];
   for (const section of sections) {
     const element = document.getElementById(section);
     if (element) {
