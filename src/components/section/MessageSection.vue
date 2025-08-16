@@ -1,146 +1,102 @@
 <template>
-  <section id="comments" class="section-container pb-8"  data-aos="zoom-in-up" data-aos-delay="120" data-aos-duration="1000">
-      <v-card class="comment-card" elevation="0">
-        <v-card-title class="comment-header">
-          <v-icon class="me-2" color="primary">mdi-comment-multiple</v-icon>
-          Comments ({{ comments.length }})
-        </v-card-title>
+  <section id="comments" class="section-container pb-8" data-aos="zoom-in-up" data-aos-delay="120"
+    data-aos-duration="1000">
+    <v-card class="comment-card" elevation="0">
+      <v-card-title class="comment-header">
+        <v-icon class="me-2" style="background: linear-gradient(to right, #9649bd, #c8558e);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;">
+          mdi-comment-multiple
+        </v-icon>
 
-        <v-card-text class="pa-6">
-          <form @submit.prevent="submit">
-            <div class="form-group mb-4">
-              <label class="form-label">
-                Name <span class="required-star">*</span>
-              </label>
-              <v-text-field
-                v-model="name.value.value"
-                :error-messages="name.errorMessage.value"
-                placeholder="Enter your name"
-                variant="solo"
-                density="comfortable"
-                class="custom-input"
-                hide-details="auto"
-                required
-              />
-            </div>
+        Comments ({{ comments.length }})
+      </v-card-title>
 
-            <div class="form-group mb-4">
-              <label class="form-label">
-                Email <span class="required-star">*</span>
-              </label>
-              <v-text-field
-                v-model="email.value.value"
-                :error-messages="email.errorMessage.value"
-                placeholder="Enter your email"
-                variant="solo"
-                density="comfortable"
-                class="custom-input"
-                hide-details="auto"
-                type="email"
-                required
-              />
-            </div>
-
-            <div class="form-group mb-4">
-              <label class="form-label">
-                Message <span class="required-star">*</span>
-              </label>
-              <v-textarea
-                v-model="message.value.value"
-                :error-messages="message.errorMessage.value"
-                placeholder="Write your message here..."
-                variant="solo"
-                density="comfortable"
-                rows="4"
-                class="custom-textarea"
-                hide-details="auto"
-                required
-              />
-            </div>
-
-            <v-btn
-              type="submit"
-              :loading="loading"
-              :disabled="loading"
-              class="post-comment-btn"
-              size="large"
-              block
-            >
-              <v-icon class="me-2">mdi-send</v-icon>
-              Post Comment
-            </v-btn>
-          </form>
-
-          <v-alert
-            v-if="errorMessage"
-            type="error"
-            class="mt-4"
-            :text="errorMessage"
-            closable
-            @click:close="errorMessage = ''"
-          />
-
-          <v-alert
-            v-if="successMessage"
-            type="success"
-            class="mt-4"
-            :text="successMessage"
-            closable
-            @click:close="successMessage = ''"
-          />
-
-          <div class="pinned-comment mt-6">
-            <v-divider class="mb-4" />
-            <div class="d-flex align-center">
-              <v-icon class="me-2" color="primary">mdi-pin</v-icon>
-              <span class="text-subtitle-2 text-primary">PINNED COMMENT</span>
-            </div>
+      <v-card-text class="pa-6">
+        <form @submit.prevent="submit">
+          <div class="form-group mb-4">
+            <label class="form-label">
+              Name <span class="required-star">*</span>
+            </label>
+            <v-text-field v-model="name.value.value" :error-messages="name.errorMessage.value"
+              placeholder="Enter your name" variant="solo" density="comfortable" class="custom-input"
+              hide-details="auto" required />
           </div>
-        </v-card-text>
-        <v-card-text v-if="comments.length > 0" class="pt-0">
+
+          <div class="form-group mb-4">
+            <label class="form-label">
+              Email <span class="required-star">*</span>
+            </label>
+            <v-text-field v-model="email.value.value" :error-messages="email.errorMessage.value"
+              placeholder="Enter your email" variant="solo" density="comfortable" class="custom-input"
+              hide-details="auto" type="email" required />
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="form-label">
+              Message <span class="required-star">*</span>
+            </label>
+            <v-textarea v-model="message.value.value" :error-messages="message.errorMessage.value"
+              placeholder="Write your message here..." variant="solo" density="comfortable" rows="4"
+              class="custom-textarea" hide-details="auto" required />
+          </div>
+
+          <v-btn type="submit" :loading="loading" :disabled="loading" class="post-comment-btn" size="large" block>
+            <v-icon class="me-2">mdi-send</v-icon>
+            Post Comment
+          </v-btn>
+        </form>
+
+        <v-alert v-if="errorMessage" type="error" class="mt-4" :text="errorMessage" closable
+          @click:close="errorMessage = ''" />
+
+        <v-alert v-if="successMessage" type="success" class="mt-4" :text="successMessage" closable
+          @click:close="successMessage = ''" />
+
+        <div class="pinned-comment mt-6" >
           <v-divider class="mb-4" />
-          <div class="comments-list">
-            <div
-              v-for="comment in comments"
-              :key="comment.id"
-              class="comment-item mb-4"
-            >
-              <div class="d-flex">
-                <v-avatar
-                  class="me-3"
-                  size="40"
-                  :color="getAvatarColor(comment.name)"
-                >
-                  <span class="text-white font-weight-bold">
-                    {{ getInitials(comment.name) }}
+          <div class="d-flex align-center">
+            <v-icon class="me-2" color="primary">mdi-pin</v-icon>
+            <span class="text-subtitle-2 text-primary">PINNED COMMENT</span>
+          </div>
+        </div>
+      </v-card-text>
+      <v-card-text v-if="comments.length > 0" class="pt-0">
+        <v-divider class="mb-4" />
+        <div class="comments-list">
+          <div v-for="comment in comments" :key="comment.id" class="comment-item mb-4">
+            <div class="d-flex">
+              <v-avatar class="me-3" size="40" :color="getAvatarColor(comment.name)">
+                <span class="text-white font-weight-bold">
+                  {{ getInitials(comment.name) }}
+                </span>
+              </v-avatar>
+              <div class="flex-grow-1">
+                <div class="d-flex align-center mb-1">
+                  <span class="font-weight-medium me-2 text-white">{{ comment.name }}</span>
+                  <span class="text-caption text-grey">
+                    {{ formatDate(comment.timestamp || comment.createdAt) }}
                   </span>
-                </v-avatar>
-                <div class="flex-grow-1">
-                  <div class="d-flex align-center mb-1">
-                    <span class="font-weight-medium me-2 text-white">{{ comment.name }}</span>
-                    <span class="text-caption text-grey">
-                      {{ formatDate(comment.timestamp || comment.createdAt) }}
-                    </span>
-                  </div>
-                  <p class="text-body-2 mb-0 text-grey-lighten-2">{{ comment.message }}</p>
-                  <div v-if="comment.email" class="text-caption text-grey mt-1">
-                    <v-icon size="12" class="me-1">mdi-email-outline</v-icon>
-                    {{ comment.email }}
-                  </div>
+                </div>
+                <p class="text-body-2 mb-0 text-grey-lighten-2">{{ comment.message }}</p>
+                <div v-if="comment.email" class="text-caption text-grey mt-1">
+                  <v-icon size="12" class="me-1">mdi-email-outline</v-icon>
+                  {{ comment.email }}
                 </div>
               </div>
             </div>
           </div>
-        </v-card-text>
+        </div>
+      </v-card-text>
 
-        <v-card-text v-else class="pt-0">
-          <v-divider class="mb-4" />
-          <div class="text-center py-8">
-            <v-icon size="48" color="grey" class="mb-2">mdi-comment-outline</v-icon>
-            <div class="text-body-1 text-grey">No comments yet. Be the first to comment!</div>
-          </div>
-        </v-card-text>
-      </v-card>
+      <v-card-text v-else class="pt-0">
+        <v-divider class="mb-4" />
+        <div class="text-center py-8">
+          <v-icon size="48" color="grey" class="mb-2">mdi-comment-outline</v-icon>
+          <div class="text-body-1 text-grey">No comments yet. Be the first to comment!</div>
+        </div>
+      </v-card-text>
+    </v-card>
   </section>
 </template>
 
@@ -339,5 +295,3 @@ onUnmounted(() => {
 
 <style scoped src="@/assets/styles/styles.css"></style>
 <style scoped src="@/assets/styles/message.css""></style>
-
-
