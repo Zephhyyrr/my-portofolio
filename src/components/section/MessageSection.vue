@@ -5,6 +5,7 @@
       <v-card-title class="comment-header">
         <v-icon class="me-2" style="background: linear-gradient(to right, #9649bd, #c8558e);
           -webkit-background-clip: text;
+          background-clip: background-clip;
           -webkit-text-fill-color: transparent;">
           mdi-comment-multiple
         </v-icon>

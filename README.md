@@ -6,6 +6,8 @@ A portfolio project showcasing a **comment system** built with Vue.js, Vuetify, 
 
 ## 🚀 Features
 
+- 📄 Resume Download Button
+- 💻 Portofolio Showcase, Project, Certificate, Techstack
 - 🔥 Firebase integration for real-time database
 - 💬 Add, list, and display comments
 - 🎨 Beautiful UI built with Vuetify
@@ -26,8 +28,8 @@ A portfolio project showcasing a **comment system** built with Vue.js, Vuetify, 
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/vue-vuetify-firebase-comments.git
-cd vue-vuetify-firebase-comments
+git clone https://github.com/Zephhyyrr/my-portofolio
+cd my-portofolio
 ```
 
 ### 2. Install Dependencies

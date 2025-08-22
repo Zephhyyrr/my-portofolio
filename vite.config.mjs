@@ -1,5 +1,6 @@
 import Components from 'unplugin-vue-components/vite'
 import Vue from '@vitejs/plugin-vue'
+import VitePluginVueDevtools from 'vite-plugin-vue-devtools'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import Fonts from 'unplugin-fonts/vite'
 import react from '@vitejs/plugin-react' 
@@ -13,6 +14,7 @@ export default defineConfig({
     Vue({
       template: { transformAssetUrls },
     }),
+    VitePluginVueDevtools(),
     react(), // Add React plugin
     Vuetify(),
     Components(),
