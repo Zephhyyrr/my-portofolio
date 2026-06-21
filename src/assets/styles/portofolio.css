@@ -10,21 +10,24 @@
 }
 
 .gradient-text {
-    font-size: 3rem;
+    font-size: 2rem;
+    font-family: 'Press Start 2P', monospace;
     font-weight: bold;
     background: linear-gradient(to right, #a759cf, #da62a0);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
+    line-height: 1.4;
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
+    font-family: 'Press Start 2P', monospace;
     color: #a9a9a9;
     max-width: 800px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
 .tabs-container {
@@ -75,6 +78,11 @@
     font-family: 'Press Start 2P', monospace;
     font-size: 0.6rem !important;
     letter-spacing: 0;
+}
+
+.filter-chip {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem !important;
 }
 
 .tab-content {
@@ -294,4 +302,16 @@
     .gradient-text {
         font-size: 2.5rem;
     }
+}
+
+.custom-btn{
+    font-size: 0.6rem;
+    font-family: 'Press Start 2P', monospace;
+    color: #ffffff;
+}
+
+.close-btn{
+    font-size: 0.6rem;
+    font-family: 'Press Start 2P', monospace;
+    color: #000000;
 }
