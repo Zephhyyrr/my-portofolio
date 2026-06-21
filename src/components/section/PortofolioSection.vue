@@ -26,16 +26,8 @@
       <!-- Projects Tab -->
       <div v-if="activeTab === 'projects'" class="tab-content">
         <v-row justify="center">
-          <v-col
-            v-for="(project, index) in projects"
-            :key="index"
-            cols="12"
-            sm="6"
-            md="4"
-            :data-aos="'fade-up'"
-            :data-aos-delay="100 * (index + 1)"
-            data-aos-duration="800"
-          >
+          <v-col v-for="(project, index) in projects" :key="index" cols="12" sm="6" md="4" :data-aos="'fade-up'"
+            :data-aos-delay="100 * (index + 1)" data-aos-duration="800">
             <v-card variant="outlined" class="project-card">
               <v-img :src="project.image" height="200px" cover></v-img>
 
@@ -56,14 +48,9 @@
                   Details
                   <v-icon class="ml-1">mdi-arrow-right</v-icon>
                 </v-btn>
-                <v-btn
-                  v-if="project.githubUrl"
-                  class="demo-btn"
-                  variant="text"
-                  :href="project.githubUrl"
-                  target="_blank"
-                >
-                  Github Link
+                <v-btn v-if="project.githubUrl" class="demo-btn" variant="text" :href="project.githubUrl"
+                  target="_blank">
+                  Publication Link
                   <v-icon class="ml-1">mdi-open-in-new</v-icon>
                 </v-btn>
               </v-card-actions>
@@ -75,16 +62,8 @@
       <!-- Certificates Tab -->
       <div v-if="activeTab === 'certificates'" class="tab-content">
         <v-row>
-          <v-col
-            v-for="(certificate, index) in certificates"
-            :key="index"
-            cols="12"
-            sm="6"
-            md="4"
-            :data-aos="'fade-up'"
-            :data-aos-delay="100 * (index + 1)"
-            data-aos-duration="800"
-          >
+          <v-col v-for="(certificate, index) in certificates" :key="index" cols="12" sm="6" md="4" :data-aos="'fade-up'"
+            :data-aos-delay="100 * (index + 1)" data-aos-duration="800">
             <v-card variant="outlined" class="certificate-card">
               <v-img :src="certificate.image" contain class="certificate-img"></v-img>
 
@@ -99,13 +78,8 @@
               </v-card-text>
 
               <v-card-actions>
-                <v-btn
-                  v-if="certificate.verifyUrl"
-                  class="verify-btn"
-                  variant="tonal"
-                  :href="certificate.verifyUrl"
-                  target="_blank"
-                >
+                <v-btn v-if="certificate.verifyUrl" class="verify-btn" variant="tonal" :href="certificate.verifyUrl"
+                  target="_blank">
                   Verify
                   <v-icon class="ml-1">mdi-check-circle</v-icon>
                 </v-btn>
@@ -119,17 +93,9 @@
       <div v-if="activeTab === 'techstack'" class="tab-content">
         <div class="tech-categories" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
           <div class="tech-items">
-            <div
-              v-for="(tech, techIndex) in techStack.items"
-              :key="techIndex"
-              class="tech-item"
-              :data-aos="'zoom-in'"
-              :data-aos-delay="100 + techIndex * 100"
-            >
-              <div
-                class="tech-icon"
-                :style="{ backgroundColor: tech.color || '#a759cf20' }"
-              >
+            <div v-for="(tech, techIndex) in techStack.items" :key="techIndex" class="tech-item" :data-aos="'zoom-in'"
+              :data-aos-delay="100 + techIndex * 100">
+              <div class="tech-icon" :style="{ backgroundColor: tech.color || '#a759cf20' }">
                 <v-icon size="x-large" :color="tech.iconColor || '#a759cf'">{{ tech.icon }}</v-icon>
               </div>
               <span class="tech-name">{{ tech.name }}</span>
@@ -146,17 +112,11 @@
           <v-card-subtitle>Role: {{ selectedProject.role }}</v-card-subtitle>
           <v-card-text>
             <p class="full-description">{{ selectedProject.description }}</p>
-            <div
-              v-if="selectedProject.technologies && selectedProject.technologies.length > 0"
-              class="technologies-section"
-            >
+            <div v-if="selectedProject.technologies && selectedProject.technologies.length > 0"
+              class="technologies-section">
               <h3>Technologies Used:</h3>
               <div class="technology-tags">
-                <v-chip
-                  v-for="(tech, techIndex) in selectedProject.technologies"
-                  :key="techIndex"
-                  class="tech-chip"
-                >
+                <v-chip v-for="(tech, techIndex) in selectedProject.technologies" :key="techIndex" class="tech-chip">
                   {{ tech }}
                 </v-chip>
               </div>
@@ -164,14 +124,9 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn
-              v-if="selectedProject.githubUrl"
-              class="demo-btn"
-              variant="text"
-              :href="selectedProject.githubUrl"
-              target="_blank"
-            >
-              Github Link
+            <v-btn v-if="selectedProject.githubUrl" class="demo-btn" variant="text" :href="selectedProject.githubUrl"
+              target="_blank">
+              Publication Link
               <v-icon class="ml-1">mdi-open-in-new</v-icon>
             </v-btn>
             <v-btn class="close-btn" variant="tonal" @click="dialogVisible = false">
@@ -193,6 +148,38 @@ const selectedProject = ref(null);
 
 // Projects data
 const projects = [
+  {
+    title: "Mosque Financial Management Information System",
+    role: "Fullstack Developer & AI Engineer",
+    description: "\"Final Project: Mosque Financial Management Information System and Donation Forecasting\" (February – Now). This project is a thesis focused on developing a mosque financial management system integrated with a donation forecasting model. The forecasting system uses a hybrid time series forecasting combining Prophet for trend and seasonality modeling and LightGBM for residual learning. I developed the backend using Express.js with a PostgreSQL database and the frontend using Nuxt.js.",
+    image: "/images/zamfis.png",
+    githubUrl: "https://zamfis.nekosukuriputo.dev/",
+    technologies: ["Nuxt.js", "Express.js", "PostgreSQL", "Prophet", "LightGBM"],
+  },
+  {
+    title: "Rima Batombe",
+    role: "Fullstack Developer",
+    description: "\"Rima Batombe\" (August - December 2025). This project is a digital platform designed to preserve Batombe culture from Nagari Abai, South Solok. It uses Generative AI via the Gemini API to generate Batombe-style pantun and includes features such as pantun sharing, a collection of authentic pantun, and a Minangkabau language learning module. I developed the Android app using Jetpack Compose with MVVM architecture, the backend using Express.js, and handled deployment using Docker and Kubernetes.",
+    image: "/images/rima_batombe.png",
+    githubUrl: "https://appdistribution.firebase.google.com/i/7358cdd0da7facb8",
+    technologies: ["Jetpack Compose", "MVVM", "Express.js", "Docker", "Kubernetes", "Gemini API"],
+  },
+  {
+    title: "Teaching Factory System SMKN 2 Batusangkar",
+    role: "Backend Developer",
+    description: "\"Community Service Project at SMK Negeri 2 Batusangkar\" (Mei – July 2025). This was a community engagement project conducted in collaboration with my university lecturer. We developed an information system website to manage the outcomes of the school's Teaching Factory program. I was responsible for the backend development using Express.js, with PostgreSQL as the database and Prisma ORM for database management.",
+    image: "/images/tefa.png",
+    githubUrl: "https://tefa.smkn2batusangkar.sch.id/",
+    technologies: ["Express.js", "PostgreSQL", "Prisma ORM"],
+  },
+  {
+    title: "License Plate Recognition (LPR) Surabaya",
+    role: "AI Engineer",
+    description: "Building a License Plate Recognition (LPR) model for the Surabaya City Government, including annotation and augmentation with Roboflow, modeling using YOLO 11n, and performance optimization through hyperparameter tuning and determining the best threshold based on F1-Score using the Grid Search method.",
+    image: "/images/lpr.png",
+    githubUrl: "https://github.com/Zephhyyrr/Licence-Plate-Recognition-Night-Condition",
+    technologies: ["Roboflow", "YOLO 11n", "Hyperparameter Tuning", "Grid Search"],
+  },
   {
     title: "UrVoice App",
     role: "Mobile App Developer, UI/UX Designer",
@@ -373,6 +360,9 @@ const techStack = {
     { name: "HTML5", icon: "mdi-language-html5", color: "#FFEBEE", iconColor: "#E34F26" },
     { name: "CSS", icon: "mdi-language-css3", color: "#FFEBEE", iconColor: "#1572B6" },
     { name: "Bootstrap", icon: "mdi-bootstrap", color: "#FFEBEE", iconColor: "#563D7C" },
+    { name: "Golang", icon: "mdi-language-go", color: "#E0F7FA", iconColor: "#00ADD8" },
+    { name: "Nuxt.js", icon: "mdi-nuxt", color: "#E8F5E9", iconColor: "#00C58E" },
+    { name: "Firebase", icon: "mdi-firebase", color: "#FFF3E0", iconColor: "#FFCA28" },
   ]
 };
 
