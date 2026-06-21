@@ -171,6 +171,24 @@ onBeforeUnmount(() => {
   border-left: 4px solid #da62a0;
 }
 
+/* Mobile Drawer Styling */
+:deep(.v-navigation-drawer) {
+  background-color: #0a0a0a !important;
+  border-right: 4px solid #da62a0 !important;
+}
+
+:deep(.v-list-item-title) {
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 0.7rem !important;
+  color: #fff;
+  padding: 12px 0;
+}
+
+.active-mobile-link :deep(.v-list-item-title) {
+  color: #da62a0 !important;
+  text-shadow: 2px 2px 0px #333;
+}
+
 @media (max-width: 768px) {
   .lanyard-wrapper {
     left: 0;

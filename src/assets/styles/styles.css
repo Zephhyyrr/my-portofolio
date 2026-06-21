@@ -1,4 +1,9 @@
 /* Global 8-Bit Typography */
+html, body, #app, .v-application {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 body, p, span, div, li, a {
     font-family: 'VT323', monospace;
     font-size: 1.2rem;
