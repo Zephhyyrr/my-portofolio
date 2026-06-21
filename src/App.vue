@@ -1,31 +1,26 @@
 <template>
   <div>
     <LoadingScreen v-if="isLoading" @loaded="handleLoaded" @play-music="startMusic" />
-    
-    <v-app v-show="!isLoading" class="fade-in-app">
-    <AppHeader />
-    <v-main>
-      <v-container class="app-container">
-        <HomeSection />
-        <AboutSection />
-        <PortofolioSection />
-        <MessageSection />
-      </v-container>
-    </v-main>
 
-    <AppFooter />
-    
-    <!-- Floating Music Toggle Button -->
-    <button
-      v-if="!isLoading"
-      class="pixel-music-btn"
-      :class="{ 'playing': isMusicPlaying }"
-      @click="toggleMusic"
-    >
-      <v-icon :class="{ 'spin-animation': isMusicPlaying }">
-        {{ isMusicPlaying ? 'mdi-music' : 'mdi-music-off' }}
-      </v-icon>
-    </button>
+    <v-app v-show="!isLoading" class="fade-in-app">
+      <AppHeader />
+      <v-main>
+        <v-container class="app-container">
+          <HomeSection />
+          <AboutSection />
+          <PortofolioSection />
+          <MessageSection />
+        </v-container>
+      </v-main>
+
+      <AppFooter />
+
+      <!-- Floating Music Toggle Button -->
+      <button v-if="!isLoading" class="pixel-music-btn" :class="{ 'playing': isMusicPlaying }" @click="toggleMusic">
+        <v-icon :class="{ 'spin-animation': isMusicPlaying }">
+          {{ isMusicPlaying ? 'mdi-music' : 'mdi-music-off' }}
+        </v-icon>
+      </button>
     </v-app>
   </div>
 </template>
@@ -44,7 +39,7 @@ let bgmAudio = null;
 
 const handleVisibilityChange = () => {
   if (!bgmAudio) return;
-  
+
   if (document.hidden) {
     // Tab hidden: pause if it was playing, but don't change the state variable
     if (isMusicPlaying.value) {
@@ -62,8 +57,8 @@ onMounted(() => {
   // Pre-load the BGM audio object
   bgmAudio = new Audio('/music/bgm.mp3');
   bgmAudio.loop = true;
-  bgmAudio.volume = 0.5; // Adjust volume if needed
-  
+  bgmAudio.volume = 1.0; // Adjust volume if needed
+
   document.addEventListener('visibilitychange', handleVisibilityChange);
 });
 
@@ -85,7 +80,7 @@ const startMusic = () => {
 
 const toggleMusic = () => {
   if (!bgmAudio) return;
-  
+
   if (isMusicPlaying.value) {
     bgmAudio.pause();
     isMusicPlaying.value = false;
@@ -110,8 +105,13 @@ const toggleMusic = () => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .pixel-music-btn {
@@ -122,7 +122,8 @@ const toggleMusic = () => {
   width: 56px;
   height: 56px;
   background-color: #000;
-  color: #757575; /* grey-darken-1 */
+  color: #757575;
+  /* grey-darken-1 */
   border: 4px solid #757575;
   box-shadow: 4px 4px 0px #757575;
   cursor: pointer;
@@ -152,7 +153,12 @@ const toggleMusic = () => {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
