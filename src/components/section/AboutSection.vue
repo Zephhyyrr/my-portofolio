@@ -83,8 +83,9 @@
 
 .profile-photo-wrapper {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
   border: 4px solid #da62a0;
   box-shadow: 8px 8px 0px #a759cf;
   overflow: hidden;

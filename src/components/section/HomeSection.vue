@@ -156,8 +156,8 @@ onMounted(() => {
 <style scoped src="@/assets/styles/styles.css"></style>
 <style scoped>
 .gif-wrapper {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  max-width: 400px;
   aspect-ratio: 1 / 1;
   margin: 0 auto;
 }
