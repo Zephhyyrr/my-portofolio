@@ -1,7 +1,6 @@
 /* Global 8-Bit Typography */
-html, body, #app, .v-application {
+html, body {
     overflow-x: hidden;
-    max-width: 100vw;
 }
 
 body, p, span, div, li, a {
@@ -31,6 +30,7 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 4px 4px 0px #da62a0;
     margin-bottom: 1.5rem;
     line-height: 1.4;
+    word-break: break-word;
 }
 
 .gradient-text-subtitle {
@@ -109,4 +109,16 @@ h1, h2, h3, h4, h5, h6 {
 /* Disable ALL Vuetify rounded corners globally just in case */
 .v-card, .v-btn, .v-sheet, .v-chip {
     border-radius: 0 !important;
+}
+
+/* Mobile Responsiveness for Retro Text */
+@media (max-width: 768px) {
+    .gradient-text {
+        font-size: 1.5rem;
+        text-shadow: 2px 2px 0px #da62a0;
+    }
+    
+    .gradient-text-subtitle {
+        font-size: 1.2rem;
+    }
 }

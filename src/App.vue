@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import PortofolioSection from './components/section/PortofolioSection.vue';
 import HomeSection from './components/section/HomeSection.vue';
 import AboutSection from './components/section/AboutSection.vue';
@@ -42,11 +42,33 @@ const isLoading = ref(true);
 const isMusicPlaying = ref(false);
 let bgmAudio = null;
 
+const handleVisibilityChange = () => {
+  if (!bgmAudio) return;
+  
+  if (document.hidden) {
+    // Tab hidden: pause if it was playing, but don't change the state variable
+    if (isMusicPlaying.value) {
+      bgmAudio.pause();
+    }
+  } else {
+    // Tab visible: resume playing if the state says it should be playing
+    if (isMusicPlaying.value) {
+      bgmAudio.play().catch(e => console.error("Audio playback failed on return:", e));
+    }
+  }
+};
+
 onMounted(() => {
   // Pre-load the BGM audio object
   bgmAudio = new Audio('/music/bgm.mp3');
   bgmAudio.loop = true;
   bgmAudio.volume = 0.5; // Adjust volume if needed
+  
+  document.addEventListener('visibilitychange', handleVisibilityChange);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('visibilitychange', handleVisibilityChange);
 });
 
 const handleLoaded = () => {
