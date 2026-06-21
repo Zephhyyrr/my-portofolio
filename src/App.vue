@@ -16,19 +16,16 @@
     <AppFooter />
     
     <!-- Floating Music Toggle Button -->
-    <v-btn
+    <button
       v-if="!isLoading"
-      class="floating-music-btn"
-      icon
-      size="large"
-      elevation="8"
+      class="pixel-music-btn"
+      :class="{ 'playing': isMusicPlaying }"
       @click="toggleMusic"
-      :color="isMusicPlaying ? '#a759cf' : 'grey-darken-3'"
     >
-      <v-icon color="white" :class="{ 'spin-animation': isMusicPlaying }">
+      <v-icon :class="{ 'spin-animation': isMusicPlaying }">
         {{ isMusicPlaying ? 'mdi-music' : 'mdi-music-off' }}
       </v-icon>
-    </v-btn>
+    </button>
     </v-app>
   </div>
 </template>
@@ -95,15 +92,36 @@ const toggleMusic = () => {
   to { opacity: 1; }
 }
 
-.floating-music-btn {
+.pixel-music-btn {
   position: fixed;
   bottom: 30px;
   right: 30px;
   z-index: 1000;
-  transition: transform 0.3s ease;
+  width: 56px;
+  height: 56px;
+  background-color: #000;
+  color: #757575; /* grey-darken-1 */
+  border: 4px solid #757575;
+  box-shadow: 4px 4px 0px #757575;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease;
 }
 
-.floating-music-btn:hover {
+.pixel-music-btn.playing {
+  color: #a759cf;
+  border-color: #a759cf;
+  box-shadow: 4px 4px 0px #a759cf;
+}
+
+.pixel-music-btn:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px transparent !important;
+}
+
+.pixel-music-btn:hover {
   transform: scale(1.1);
 }
 

@@ -73,17 +73,17 @@
               Let's Connect With Me
             </h3>
 
-            <v-btn icon href="https://www.linkedin.com/in/firman-ardiansyah04" target="_blank" class="mr-2 custom-btn-two">
-              <v-icon size="26" color="#ffffff">mdi-linkedin</v-icon>
+            <v-btn icon href="https://www.linkedin.com/in/firman-ardiansyah04" target="_blank" class="mr-2 retro-card">
+              <v-icon size="26" color="#da62a0">mdi-linkedin</v-icon>
             </v-btn>
-            <v-btn icon href="https://github.com/Zephhyyrr" target="_blank" class="mr-2 custom-btn-two">
-              <v-icon size="26" color="#ffffff">mdi-github</v-icon>
+            <v-btn icon href="https://github.com/Zephhyyrr" target="_blank" class="mr-2 retro-card">
+              <v-icon size="26" color="#da62a0">mdi-github</v-icon>
             </v-btn>
-            <v-btn icon href="https://instagram.com/firman.ard04" target="_blank" class="mr-2 custom-btn-two">
-              <v-icon size="26" color="#ffffff">mdi-instagram</v-icon>
+            <v-btn icon href="https://instagram.com/firman.ard04" target="_blank" class="mr-2 retro-card">
+              <v-icon size="26" color="#da62a0">mdi-instagram</v-icon>
             </v-btn>
-            <v-btn icon href="mailto:ardiansyahfirman2004@gmail.com" target="_blank" class="mr-2 custom-btn-two">
-              <v-icon size="26" color="#ffffff">mdi-email</v-icon>
+            <v-btn icon href="mailto:ardiansyahfirman2004@gmail.com" target="_blank" class="mr-2 retro-card">
+              <v-icon size="26" color="#da62a0">mdi-email</v-icon>
             </v-btn>
           </div>
         </v-col>
@@ -171,12 +171,16 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border: 4px solid #da62a0;
+  box-shadow: 8px 8px 0px #a759cf;
+  transition: all 0.2s ease;
+  image-rendering: pixelated;
 }
 
-.animated-gif:hover{
+.animated-gif:hover {
     border-color: #a759cf;
-    transform: scale(1.05) translateY(-8px) rotateZ(4deg);
+    box-shadow: 8px 8px 0px #da62a0;
+    transform: translate(-4px, -4px) scale(1.02);
     cursor: pointer;
 }
 

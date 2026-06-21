@@ -6,15 +6,10 @@
     <div class="progress-container">
       <div class="progress-bar" :style="{ width: scrollProgress + '%' }"></div>
     </div>
-    <v-app-bar :elevation="2" rounded>
+    <v-app-bar :elevation="0" class="retro-nav">
       <template v-slot:prepend>
         <v-app-bar-nav-icon @click="drawer = !drawer" class="d-flex d-sm-none"></v-app-bar-nav-icon>
-        <v-app-bar-title style="
-  background: linear-gradient(to right, #a759cf, #da62a0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: bold;">
+        <v-app-bar-title class="retro-title">
           Firman Ardiansyah
         </v-app-bar-title>
       </template>
@@ -109,18 +104,30 @@ onBeforeUnmount(() => {
   position: relative;
 }
 
+.retro-nav {
+  background-color: #000 !important;
+  border-bottom: 4px solid #333 !important;
+}
+
+.retro-title {
+  font-family: 'Press Start 2P', monospace;
+  color: #a759cf;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 0px #da62a0;
+}
+
 .progress-container {
   position: fixed;
   top: 64px;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 6px;
   z-index: 999;
 }
 
 .progress-bar {
   height: 100%;
-  background: linear-gradient(to right, #a759cf, #da62a0);
+  background-color: #da62a0;
   width: 0%;
   transition: width 0.1s ease;
 }
@@ -137,40 +144,31 @@ onBeforeUnmount(() => {
 }
 
 .v-btn {
-  position: relative;
-  padding-bottom: 6px;
-  overflow: visible;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #fff !important;
+  letter-spacing: 0px;
 }
 
-.underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: transparent;
-  transition: width 0.3s ease;
+.v-btn:hover {
+  color: #a759cf !important;
 }
 
 .active-link {
-  background: linear-gradient(to right, #a759cf, #da62a0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  font-weight: 500;
+  color: #da62a0 !important;
+  text-shadow: 2px 2px 0px #333;
 }
 
 .active-underline {
   width: 100%;
-  background: linear-gradient(to right, #a759cf, #da62a0);
+  background-color: #da62a0;
+  height: 4px;
 }
 
 .active-mobile-link {
-  background: linear-gradient(to right, #a759cf, #da62a0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  font-weight: 500;
+  color: #da62a0 !important;
+  background-color: #222;
+  border-left: 4px solid #da62a0;
 }
 
 @media (max-width: 768px) {

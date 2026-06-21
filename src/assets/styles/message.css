@@ -12,12 +12,13 @@
 }
 
 .comment-card {
-    background: #2a3441 !important;
-    border-radius: 16px !important;
+    background: #0a0a0a !important;
+    border: 4px solid #da62a0 !important;
+    box-shadow: 8px 8px 0px #a759cf !important;
+    border-radius: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
     margin-left: 0 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .comment-header {
@@ -51,10 +52,12 @@
 
 /* Custom Input Styling */
 .custom-input :deep(.v-field) {
-    background: #3d4b5c !important;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
+    background: #111 !important;
+    border: 4px solid #333;
+    border-radius: 0 !important;
     color: #ffffff !important;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
 }
 
 .custom-input :deep(.v-field__input) {
@@ -63,20 +66,22 @@
 }
 
 .custom-input :deep(.v-field__input::placeholder) {
-    color: #8b949e !important;
+    color: #555 !important;
 }
 
 .custom-input :deep(.v-field--focused) {
     border-color: #a759cf !important;
-    box-shadow: 0 0 0 2px rgba(167, 89, 207, 0.2);
+    box-shadow: 4px 4px 0px #da62a0;
 }
 
 /* Custom Textarea Styling */
 .custom-textarea :deep(.v-field) {
-    background: #3d4b5c !important;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
+    background: #111 !important;
+    border: 4px solid #333;
+    border-radius: 0 !important;
     color: #ffffff !important;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
 }
 
 .custom-textarea :deep(.v-field__input) {
@@ -85,27 +90,36 @@
 }
 
 .custom-textarea :deep(.v-field__input::placeholder) {
-    color: #8b949e !important;
+    color: #555 !important;
 }
 
 .custom-textarea :deep(.v-field--focused) {
     border-color: #a759cf !important;
-    box-shadow: 0 0 0 2px rgba(167, 89, 207, 0.2);
+    box-shadow: 4px 4px 0px #da62a0;
 }
 
 .post-comment-btn {
-    background: linear-gradient(to right, #a759cf, #da62a0) !important;
-    color: white !important;
-    border-radius: 12px !important;
-    text-transform: none !important;
-    font-weight: 600;
+    background-color: #a759cf !important;
+    color: #000 !important;
+    border: 4px solid #a759cf !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0px #da62a0 !important;
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0px !important;
+    text-transform: uppercase !important;
     height: 48px !important;
+    transition: all 0.1s ease !important;
+}
+
+.post-comment-btn:active {
+    transform: translate(4px, 4px) !important;
+    box-shadow: 0px 0px 0px transparent !important;
 }
 
 .post-comment-btn:hover {
-    background: linear-gradient(to right, #9649bd, #c8558e) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(167, 89, 207, 0.3) !important;
+    background-color: #da62a0 !important;
+    border-color: #da62a0 !important;
 }
 
 .pinned-comment {
@@ -115,9 +129,10 @@
 
 .comment-item {
     padding: 16px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border-left: 4px solid #a759cf;
+    border-radius: 0;
+    background: #111;
+    border: 4px solid #333;
+    margin-bottom: 1rem;
 }
 
 .comments-list {
@@ -146,12 +161,12 @@
 
 /* Form field styling */
 :deep(.v-field--variant-outlined .v-field__outline) {
-    border-radius: 12px;
+    border-radius: 0;
 }
 
 :deep(.v-field--focused .v-field__outline) {
     border-color: #a759cf;
-    border-width: 2px;
+    border-width: 4px;
 }
 
 :deep(.v-label--active) {
@@ -166,6 +181,6 @@
     }
 
     .comment-card {
-        border-radius: 12px !important;
+        border-radius: 0 !important;
     }
 }

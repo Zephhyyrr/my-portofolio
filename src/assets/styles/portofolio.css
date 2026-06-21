@@ -31,8 +31,9 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
-    background-color: rgba(167, 89, 207, 0.05);
-    border-radius: 12px;
+    background-color: #000;
+    border: 4px solid #da62a0;
+    box-shadow: 6px 6px 0px #a759cf;
     padding: 0.5rem;
     max-width: 600px;
     margin-left: auto;
@@ -45,30 +46,35 @@
     justify-content: center;
     padding: 1rem 2rem;
     cursor: pointer;
-    border-radius: 8px;
     margin: 0 0.25rem;
-    transition: all 0.3s ease;
-    color: #6c757d;
+    transition: all 0.2s ease;
+    color: #fff;
+    border: 2px solid transparent;
 }
 
 .tab span {
     margin-left: 0.5rem;
-    font-weight: 500;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
 }
 
 .tab.active {
-    background: linear-gradient(to right, #a759cf, #da62a0);
-    color: white;
-    box-shadow: 0 4px 15px rgba(167, 89, 207, 0.3);
-    transform: translateY(-2px);
+    background-color: #a759cf;
+    color: #000;
+    border: 2px solid #da62a0;
+    box-shadow: 4px 4px 0px #da62a0;
+    transform: translate(-2px, -2px);
 }
 
 .active-filter {
-    background: linear-gradient(to right, #a759cf, #da62a0) !important;
-    color: white !important;
-    border-color: transparent !important;
-    box-shadow: 0 4px 15px rgba(167, 89, 207, 0.3);
-    transform: translateY(-2px);
+    background-color: #a759cf !important;
+    color: #000 !important;
+    border: 2px solid #da62a0 !important;
+    box-shadow: 4px 4px 0px #da62a0 !important;
+    transform: translate(-2px, -2px);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem !important;
+    letter-spacing: 0;
 }
 
 .tab-content {
@@ -78,16 +84,18 @@
 
 .project-card {
     height: 100%;
-    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+    border: 4px solid #333;
+    background-color: #0a0a0a;
+    box-shadow: 6px 6px 0px #1a1a1a;
     display: flex;
     flex-direction: column;
 }
 
 .project-card:hover {
-    box-shadow: 0 4px 20px rgba(167, 89, 207, 0.4);
+    box-shadow: 6px 6px 0px #a759cf;
     border-color: #a759cf;
-    transform: translateY(-8px);
+    transform: translate(-4px, -4px);
     cursor: pointer;
 }
 
@@ -106,31 +114,36 @@
 }
 
 .demo-btn {
-    color: #a759cf;
-    transition: color 0.3s ease;
+    color: #da62a0;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    transition: color 0.2s ease;
 }
 
 .demo-btn:hover {
-    color: #da62a0;
+    color: #a759cf;
 }
 
 .certificate-card {
     height: 100%;
-    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+    border: 4px solid #333;
+    background-color: #0a0a0a;
+    box-shadow: 6px 6px 0px #1a1a1a;
     display: flex;
     flex-direction: column;
 }
 
 .certificate-card:hover {
-    box-shadow: 0 4px 20px rgba(167, 89, 207, 0.4);
-    border-color: #a759cf;
-    transform: translateY(-8px);
+    box-shadow: 6px 6px 0px #da62a0;
+    border-color: #da62a0;
+    transform: translate(-4px, -4px);
 }
 
 .certificate-img {
-    background-color: #f8f9fa;
+    background-color: #000;
     object-fit: cover;
+    image-rendering: pixelated;
 }
 
 .credential {

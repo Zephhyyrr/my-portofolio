@@ -34,9 +34,10 @@ const isBootComplete = ref(false);
 
 const terminalLines = [
   "FIRMAN OS v1.0 (C) 2024-2026 FIRMAN CORP",
-  "CPU: FULLSTACK & AI ENGINEER @ MAX GHz",
+  "CPU: FULLSTACK & AI ENGINEER @ 4.2 GHz",
   "MATH CO-PROCESSOR: INTEGRATED",
   "DETECTING CORE SKILLS...",
+  "  MOBILE_UNIT: ANDROID JETPACK COMPOSE ... OK",
   "  FRONTEND UNIT: VUE.JS & NUXT.JS ... OK",
   "  BACKEND UNIT: NODE.JS & GOLANG ... OK",
   "  AI UNIT: PYTHON & MACHINE LEARNING ... OK",
@@ -58,12 +59,12 @@ const handlePopup = (playMusic) => {
 
 const startBootSequence = () => {
   let currentIndex = 0;
-  
+
   const printLine = () => {
     if (currentIndex < terminalLines.length) {
       visibleLines.value.push(terminalLines[currentIndex]);
       currentIndex++;
-      
+
       const delay = Math.random() * 250 + 50; // Faster typing
       setTimeout(printLine, delay);
     } else {
@@ -74,7 +75,7 @@ const startBootSequence = () => {
       }, 1000); // 1 second delay before auto-transition
     }
   };
-  
+
   setTimeout(printLine, 500); // Small delay before boot starts
 };
 
@@ -157,7 +158,8 @@ const finishLoading = () => {
 }
 
 .terminal-line {
-  font-size: 0.75rem; /* Smaller font size */
+  font-size: 0.75rem;
+  /* Smaller font size */
   line-height: 1.8;
   margin-bottom: 0.5rem;
   text-align: left;
@@ -186,20 +188,31 @@ const finishLoading = () => {
 }
 
 @keyframes blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 600px) {
   .terminal-screen {
     padding: 1rem;
   }
+
   .terminal-line {
     font-size: 0.55rem;
   }
+
   .popup-title {
     font-size: 0.8rem;
   }
+
   .pixel-btn {
     font-size: 0.7rem;
     padding: 0.6rem 1rem;

@@ -1,51 +1,107 @@
+/* Global 8-Bit Typography */
+body, p, span, div, li, a {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Press Start 2P', monospace;
+    text-transform: uppercase;
+}
+
+/* Base Overrides for Vuetify */
+.v-application {
+    font-family: 'VT323', monospace !important;
+}
+
 .container {
     padding: 2rem 1rem;
 }
 
 .gradient-text {
-    font-size: 3rem;
-    font-weight: bold;
-    background: linear-gradient(to right, #a759cf, #da62a0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-family: 'Press Start 2P', monospace;
+    color: #a759cf;
+    text-shadow: 4px 4px 0px #da62a0;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
 }
 
 .gradient-text-subtitle {
-    font-size: 30px;
-    font-weight: bold;
-    background: linear-gradient(to right, #8e8e8e, #c0c0c0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    font-family: 'VT323', monospace;
+    color: #c0c0c0;
+    text-shadow: 2px 2px 0px #424242;
     margin-bottom: 1.5rem;
     line-height: 1.6;
     max-width: 800px;
 }
-.subtitle-text{
-    background: linear-gradient(to right, #bababa, #c0c0c0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+.subtitle-text {
+    color: #bababa;
+}
+
+/* Retro Utilities */
+.retro-card {
+    background-color: #0a0a0a !important;
+    border: 4px solid #333 !important;
+    border-radius: 0 !important;
+    box-shadow: 8px 8px 0px #1a1a1a !important;
+    transition: all 0.2s ease;
+}
+
+.retro-card:hover {
+    border-color: #a759cf !important;
+    box-shadow: 8px 8px 0px #a759cf !important;
+    transform: translate(-4px, -4px);
 }
 
 .custom-btn {
     background-color: #a759cf !important;
-    color: white !important;
-    transition: background-color 0.3s ease;
+    color: #000 !important;
+    border: 4px solid #a759cf !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0px #da62a0 !important;
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0px !important;
+    transition: all 0.1s ease !important;
+}
+
+.custom-btn:active {
+    transform: translate(4px, 4px) !important;
+    box-shadow: 0px 0px 0px transparent !important;
 }
 
 .custom-btn:hover {
     background-color: #da62a0 !important;
+    border-color: #da62a0 !important;
 }
 
 .custom-btn-two {
     background-color: transparent !important;
-    color: white !important;
-    transition: background-color 0.3s ease;
+    color: #da62a0 !important;
+    border: 4px solid #da62a0 !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0px #da62a0 !important;
+    font-family: 'Press Start 2P', monospace !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0px !important;
+    transition: all 0.1s ease !important;
+}
+
+.custom-btn-two:active {
+    transform: translate(4px, 4px) !important;
+    box-shadow: 0px 0px 0px transparent !important;
 }
 
 .custom-btn-two:hover {
     background-color: #da62a0 !important;
+    color: #000 !important;
+}
+
+/* Disable ALL Vuetify rounded corners globally just in case */
+.v-card, .v-btn, .v-sheet, .v-chip {
+    border-radius: 0 !important;
 }
