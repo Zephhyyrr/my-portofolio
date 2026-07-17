@@ -1,164 +1,307 @@
 <template>
-  <div>
-    <LoadingScreen v-if="isLoading" @loaded="handleLoaded" @play-music="startMusic" />
+  <div class="desktop-environment">
+    <LoadingScreen v-if="isLoading" @loaded="handleLoaded" />
 
-    <v-app v-show="!isLoading" class="fade-in-app">
-      <AppHeader />
-      <v-main>
-        <v-container class="app-container">
-          <HomeSection />
-          <AboutSection />
-          <PortofolioSection />
-          <MessageSection />
-        </v-container>
-      </v-main>
+    <div v-show="!isLoading" class="desktop-background" :style="{ backgroundImage: `url('${currentBackground}')` }">
+      <MenuBar />
+      
+      <div class="desktop-icons-container">
+        <DesktopIcon 
+          v-for="win in desktopWindows" 
+          :key="win.id" 
+          :windowData="win" 
+        />
+      </div>
 
-      <AppFooter />
+      <WeatherWidget />
+      <StickyNote />
+      <MusicPlayer />
 
-      <!-- Floating Music Toggle Button -->
-      <button v-if="!isLoading" class="pixel-music-btn" :class="{ 'playing': isMusicPlaying }" @click="toggleMusic">
-        <v-icon :class="{ 'spin-animation': isMusicPlaying }">
-          {{ isMusicPlaying ? 'mdi-music' : 'mdi-music-off' }}
-        </v-icon>
-      </button>
-    </v-app>
+      <WindowFrame 
+        v-for="win in windows" 
+        :key="win.id" 
+        :windowData="win"
+      >
+        <component :is="getComponentForWindow(win.id)" :windowData="win" />
+      </WindowFrame>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import PortofolioSection from './components/section/PortofolioSection.vue';
-import HomeSection from './components/section/HomeSection.vue';
-import AboutSection from './components/section/AboutSection.vue';
-import MessageSection from './components/section/MessageSection.vue';
+import { ref, computed, watch } from 'vue';
+import { useWindows } from '@/composables/useWindows';
+import { useTheme as useAppTheme } from '@/composables/useTheme';
+import { useTheme as useVuetifyTheme } from 'vuetify';
+
 import LoadingScreen from './components/LoadingScreen.vue';
+import DesktopIcon from './components/desktop/DesktopIcon.vue';
+import WindowFrame from './components/desktop/WindowFrame.vue';
+import MenuBar from './components/desktop/MenuBar.vue';
+import WeatherWidget from './components/widgets/WeatherWidget.vue';
+import StickyNote from './components/widgets/StickyNote.vue';
+import MusicPlayer from './components/widgets/MusicPlayer.vue';
+
+import AboutSection from './components/section/AboutSection.vue';
+import PortofolioSection from './components/section/PortofolioSection.vue';
+import CertificateSection from './components/section/CertificateSection.vue';
+import TechStackSection from './components/section/TechStackSection.vue';
+import LinkedInSection from './components/section/LinkedInSection.vue';
+
+const { windows } = useWindows();
+const { isDarkMode } = useAppTheme();
+const vuetifyTheme = useVuetifyTheme();
+
+watch(isDarkMode, (newVal) => {
+  vuetifyTheme.global.name.value = newVal ? 'dark' : 'light';
+}, { immediate: true });
+
+// Show all icons except music which is already a widget, but wait, music is an icon in the screenshot.
+const desktopWindows = computed(() => windows);
 
 const isLoading = ref(true);
-const isMusicPlaying = ref(false);
-let bgmAudio = null;
 
-const handleVisibilityChange = () => {
-  if (!bgmAudio) return;
-
-  if (document.hidden) {
-    // Tab hidden: pause if it was playing, but don't change the state variable
-    if (isMusicPlaying.value) {
-      bgmAudio.pause();
-    }
-  } else {
-    // Tab visible: resume playing if the state says it should be playing
-    if (isMusicPlaying.value) {
-      bgmAudio.play().catch(e => console.error("Audio playback failed on return:", e));
-    }
-  }
-};
-
-onMounted(() => {
-  // Pre-load the BGM audio object
-  bgmAudio = new Audio('/music/bgm.mp3');
-  bgmAudio.loop = true;
-  bgmAudio.volume = 1.0; // Adjust volume if needed
-
-  document.addEventListener('visibilitychange', handleVisibilityChange);
-});
-
-onUnmounted(() => {
-  document.removeEventListener('visibilitychange', handleVisibilityChange);
-});
+const backgrounds = [
+  'https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=2069&auto=format&fit=crop', // original
+  'https://images.unsplash.com/photo-1554034483-04fda0d3507b?q=80&w=2070&auto=format&fit=crop', // dark aesthetic
+  'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop', // abstract gradient
+  'https://images.unsplash.com/photo-1495110314580-48a98404a3f9?q=80&w=2076&auto=format&fit=crop', // modern minimal dark
+  'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=2070&auto=format&fit=crop'  // artistic dark gradient
+];
+const currentBackground = ref(backgrounds[Math.floor(Math.random() * backgrounds.length)]);
 
 const handleLoaded = () => {
   isLoading.value = false;
 };
 
-const startMusic = () => {
-  if (bgmAudio) {
-    bgmAudio.play().then(() => {
-      isMusicPlaying.value = true;
-    }).catch(e => console.error("Audio playback failed:", e));
+const getComponentForWindow = (id) => {
+  switch (id) {
+    case 'about':
+      return AboutSection;
+    case 'projects':
+      return PortofolioSection;
+    case 'certificates':
+      return CertificateSection;
+    case 'techstack':
+      return TechStackSection;
+    case 'linkedin':
+      return LinkedInSection;
+    default:
+      return null;
   }
 };
-
-const toggleMusic = () => {
-  if (!bgmAudio) return;
-
-  if (isMusicPlaying.value) {
-    bgmAudio.pause();
-    isMusicPlaying.value = false;
-  } else {
-    bgmAudio.play().then(() => {
-      isMusicPlaying.value = true;
-    }).catch(e => console.error("Audio playback failed:", e));
-  }
-};
-
 </script>
 
-<style scoped>
-.app-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 6px;
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Inter', sans-serif;
 }
 
-.fade-in-app {
-  animation: fadeIn 1s ease-in;
+.desktop-environment {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.pixel-music-btn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  width: 56px;
-  height: 56px;
-  background-color: #000;
-  color: #757575;
-  /* grey-darken-1 */
-  border: 4px solid #757575;
-  box-shadow: 4px 4px 0px #757575;
-  cursor: pointer;
+.desktop-background {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.1s ease;
 }
 
-.pixel-music-btn.playing {
-  color: #a759cf;
-  border-color: #a759cf;
-  box-shadow: 4px 4px 0px #a759cf;
+.desktop-icons-container {
+  padding: 20px;
+  margin-top: 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  height: calc(100vh - 48px); /* Adjust for bottom Taskbar */
+  flex-wrap: wrap; 
 }
 
-.pixel-music-btn:active {
-  transform: translate(4px, 4px) !important;
-  box-shadow: 0px 0px 0px transparent !important;
+/* Override Vuetify global styles if they mess up the layout */
+.v-application {
+  background: transparent !important;
+}
+.v-application__wrap {
+  min-height: 100vh !important;
 }
 
-.pixel-music-btn:hover {
-  transform: scale(1.1);
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.spin-animation {
-  animation: spin 3s linear infinite;
+/* Dark Theme Global Styles */
+body.dark-theme .desktop-background {
+  background-color: #121212;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
+body.dark-theme .mac-menubar {
+  background-color: rgba(30, 30, 30, 0.7) !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
 
-  100% {
-    transform: rotate(360deg);
-  }
+body.dark-theme .profile-name,
+body.dark-theme .tray-icon:not(.music-active),
+body.dark-theme .system-tray,
+body.dark-theme .tray-time,
+body.dark-theme .time,
+body.dark-theme .date,
+body.dark-theme .battery-text {
+  color: #ffffff !important;
+}
+
+body.dark-theme .tray-icon:hover {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .start-trigger-container:hover,
+body.dark-theme .tray-time:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-theme .start-menu-popup {
+  background-color: rgba(30, 30, 32, 0.85) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.1) inset !important;
+}
+
+body.dark-theme .user-section {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border-top: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+body.dark-theme .app-title, body.dark-theme .section-title, body.dark-theme .first-name, body.dark-theme .last-name {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .browser-window {
+  background-color: rgba(30, 30, 32, 0.85) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.1) inset !important;
+}
+
+body.dark-theme .browser-toolbar {
+  background-color: rgba(40, 40, 42, 0.5) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+body.dark-theme .browser-content {
+  background-color: rgba(30, 30, 32, 0.95) !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .active-tab {
+  background-color: rgba(40, 40, 42, 0.8) !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .inactive-tab {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .address-bar {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .nav-buttons {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .nav-btn:hover {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .close-tab:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-theme .new-tab-btn {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .new-tab-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Portofolio & Certificate Cards Dark Mode */
+body.dark-theme .gradient-text {
+    color: #f1f5f9;
+}
+body.dark-theme .subtitle {
+    color: #94a3b8;
+}
+body.dark-theme .project-card, 
+body.dark-theme .certificate-card, 
+body.dark-theme .tech-item {
+    background-color: #1e1e20 !important;
+    border-color: #3f3f46 !important;
+}
+body.dark-theme .project-card .v-card-title,
+body.dark-theme .tech-name,
+body.dark-theme .certificate-card .text-subtitle-1 {
+    color: #f1f5f9 !important;
+}
+body.dark-theme .project-card .v-card-subtitle,
+body.dark-theme .description-text,
+body.dark-theme .certificate-card .text-caption,
+body.dark-theme .certificate-card .text-body-2,
+body.dark-theme .certificate-card .v-card-subtitle {
+    color: #94a3b8 !important;
+}
+body.dark-theme .dialog-card {
+    background-color: #1e1e20 !important;
+}
+body.dark-theme .dialog-title,
+body.dark-theme .dialog-card .text-subtitle-1 {
+    color: #f1f5f9 !important;
+}
+body.dark-theme .dialog-card .v-card-subtitle,
+body.dark-theme .full-description {
+    color: #94a3b8 !important;
+}
+body.dark-theme .tech-chip {
+    background-color: #3f3f46 !important;
+    color: #f1f5f9 !important;
+}
+body.dark-theme .demo-btn {
+    color: #60a5fa !important;
+}
+body.dark-theme .demo-btn:hover {
+    background-color: rgba(96, 165, 250, 0.1) !important;
+}
+
+/* About Me Dark Mode */
+body.dark-theme .subtitle-text {
+    color: #f1f5f9 !important;
+}
+
+/* LinkedIn Card Dark Mode */
+body.dark-theme .linkedin-card {
+    background-color: #1e1e20 !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+}
+body.dark-theme .linkedin-card .profile-name {
+    color: #f1f5f9 !important;
+}
+body.dark-theme .linkedin-card .profile-title {
+    color: #94a3b8 !important;
+}
+body.dark-theme .linkedin-card .alert-box {
+    background-color: rgba(37, 99, 235, 0.15) !important;
+    border-color: rgba(37, 99, 235, 0.3) !important;
+    color: #93c5fd !important;
 }
 </style>

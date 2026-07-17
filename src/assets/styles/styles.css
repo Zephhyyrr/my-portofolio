@@ -1,22 +1,16 @@
-/* Global 8-Bit Typography */
+/* Modern Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 html, body {
     overflow-x: hidden;
-}
-
-body, p, span, div, li, a {
-    font-family: 'VT323', monospace;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Press Start 2P', monospace;
-    text-transform: uppercase;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
 }
 
 /* Base Overrides for Vuetify */
 .v-application {
-    font-family: 'VT323', monospace !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
 .container {
@@ -25,100 +19,89 @@ h1, h2, h3, h4, h5, h6 {
 
 .gradient-text {
     font-size: 2.5rem;
-    font-family: 'Press Start 2P', monospace;
-    color: #a759cf;
-    text-shadow: 4px 4px 0px #da62a0;
+    font-weight: 700;
+    background: linear-gradient(90deg, #3498db, #9b59b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.profile-gradient-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #a759cf, #da62a0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
     line-height: 1.4;
     word-break: break-word;
 }
 
 .gradient-text-subtitle {
-    font-size: 1.5rem;
-    font-family: 'VT323', monospace;
-    color: #c0c0c0;
-    text-shadow: 2px 2px 0px #424242;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
     margin-bottom: 1.5rem;
     line-height: 1.6;
     max-width: 800px;
 }
 
 .subtitle-text {
-    color: #bababa;
+    color: #666;
+    line-height: 1.6;
 }
 
-/* Retro Utilities */
+/* Modern Utilities */
 .retro-card {
-    background-color: #0a0a0a !important;
-    border: 4px solid #333 !important;
-    border-radius: 0 !important;
-    box-shadow: 8px 8px 0px #1a1a1a !important;
+    background-color: #ffffff !important;
+    border: 1px solid #eaeaea !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
     transition: all 0.2s ease;
 }
 
 .retro-card:hover {
-    border-color: #a759cf !important;
-    box-shadow: 8px 8px 0px #a759cf !important;
-    transform: translate(-4px, -4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px);
 }
 
 .custom-btn {
-    background-color: #a759cf !important;
-    color: #000 !important;
-    border: 4px solid #a759cf !important;
-    border-radius: 0 !important;
-    box-shadow: 4px 4px 0px #da62a0 !important;
-    font-family: 'Press Start 2P', monospace !important;
-    font-size: 0.8rem !important;
-    letter-spacing: 0px !important;
-    transition: all 0.1s ease !important;
-}
-
-.custom-btn:active {
-    transform: translate(4px, 4px) !important;
-    box-shadow: 0px 0px 0px transparent !important;
+    background-color: #3498db !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3) !important;
 }
 
 .custom-btn:hover {
-    background-color: #da62a0 !important;
-    border-color: #da62a0 !important;
+    background-color: #2980b9 !important;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4) !important;
 }
 
 .custom-btn-two {
     background-color: transparent !important;
-    color: #da62a0 !important;
-    border: 4px solid #da62a0 !important;
-    border-radius: 0 !important;
-    box-shadow: 4px 4px 0px #da62a0 !important;
-    font-family: 'Press Start 2P', monospace !important;
-    font-size: 0.8rem !important;
-    letter-spacing: 0px !important;
-    transition: all 0.1s ease !important;
-}
-
-.custom-btn-two:active {
-    transform: translate(4px, 4px) !important;
-    box-shadow: 0px 0px 0px transparent !important;
+    color: #3498db !important;
+    border: 1px solid #3498db !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
 }
 
 .custom-btn-two:hover {
-    background-color: #da62a0 !important;
-    color: #000 !important;
+    background-color: rgba(52, 152, 219, 0.1) !important;
 }
 
-/* Disable ALL Vuetify rounded corners globally just in case */
-.v-card, .v-btn, .v-sheet, .v-chip {
-    border-radius: 0 !important;
-}
-
-/* Mobile Responsiveness for Retro Text */
 @media (max-width: 768px) {
-    .gradient-text {
-        font-size: 1.5rem;
-        text-shadow: 2px 2px 0px #da62a0;
+    .gradient-text, .profile-gradient-text {
+        font-size: 2rem;
     }
     
     .gradient-text-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 }

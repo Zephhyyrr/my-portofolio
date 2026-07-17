@@ -1,191 +1,99 @@
 .portfolio-container {
-    padding: 2rem 0;
+    padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    font-family: 'Inter', sans-serif;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .gradient-text {
     font-size: 2rem;
-    font-family: 'Press Start 2P', monospace;
-    font-weight: bold;
-    background: linear-gradient(to right, #a759cf, #da62a0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
-    line-height: 1.4;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    font-size: 0.8rem;
-    font-family: 'Press Start 2P', monospace;
-    color: #a9a9a9;
+    font-size: 1rem;
+    color: #6b7280;
     max-width: 800px;
     margin: 0 auto;
-    line-height: 1.8;
 }
 
-.tabs-container {
-    display: flex;
-    justify-content: center;
+.filter-container {
     margin-bottom: 2rem;
-    background-color: #000;
-    border: 4px solid #da62a0;
-    box-shadow: 6px 6px 0px #a759cf;
-    padding: 0.5rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 2rem;
-    cursor: pointer;
-    margin: 0 0.25rem;
-    transition: all 0.2s ease;
-    color: #fff;
-    border: 2px solid transparent;
-}
-
-.tab span {
-    margin-left: 0.5rem;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.7rem;
-}
-
-.tab.active {
-    background-color: #a759cf;
-    color: #000;
-    border: 2px solid #da62a0;
-    box-shadow: 4px 4px 0px #da62a0;
-    transform: translate(-2px, -2px);
-}
-
-.active-filter {
-    background-color: #a759cf !important;
-    color: #000 !important;
-    border: 2px solid #da62a0 !important;
-    box-shadow: 4px 4px 0px #da62a0 !important;
-    transform: translate(-2px, -2px);
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.6rem !important;
-    letter-spacing: 0;
 }
 
 .filter-chip {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.6rem !important;
+    font-weight: 500;
+    color: #4b5563;
+    border-color: #d1d5db;
+    transition: all 0.2s;
 }
 
-.tab-content {
-    padding: 1rem;
-    min-height: 400px;
+.active-filter {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    border-color: #3b82f6 !important;
 }
 
-.project-card {
-    height: 100%;
+.project-card, .certificate-card, .tech-item {
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     transition: all 0.2s ease;
-    border: 4px solid #333;
-    background-color: #0a0a0a;
-    box-shadow: 6px 6px 0px #1a1a1a;
-    display: flex;
-    flex-direction: column;
+    overflow: hidden;
 }
 
-.project-card:hover {
-    box-shadow: 6px 6px 0px #a759cf;
-    border-color: #a759cf;
-    transform: translate(-4px, -4px);
-    cursor: pointer;
+.project-card:hover, .certificate-card:hover, .tech-item:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-4px);
+}
+
+.project-card .v-card-title {
+    color: #1f2937 !important;
+    font-weight: 700;
+}
+
+.project-card .v-card-subtitle {
+    color: #4b5563 !important;
 }
 
 .description-text {
-    flex-grow: 1;
+    color: #4b5563;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
-.custom-btn {
-    background-color: #a759cf;
-    color: white;
-    transition: background-color 0.3s ease;
+.custom-btn, .verify-btn {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.85rem !important;
 }
-
-.custom-btn:hover {
-    background-color: #da62a0;
+.custom-btn:hover, .verify-btn:hover {
+    background-color: #2563eb !important;
 }
 
 .demo-btn {
-    color: #da62a0;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.7rem;
-    transition: color 0.2s ease;
+    color: #3b82f6 !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.85rem !important;
 }
-
 .demo-btn:hover {
-    color: #a759cf;
-}
-
-.certificate-card {
-    height: 100%;
-    transition: all 0.2s ease;
-    border: 4px solid #333;
-    background-color: #0a0a0a;
-    box-shadow: 6px 6px 0px #1a1a1a;
-    display: flex;
-    flex-direction: column;
-}
-
-.certificate-card:hover {
-    box-shadow: 6px 6px 0px #da62a0;
-    border-color: #da62a0;
-    transform: translate(-4px, -4px);
-}
-
-.certificate-img {
-    background-color: #000;
-    object-fit: cover;
-    image-rendering: pixelated;
-}
-
-.credential {
-    font-size: 0.9rem;
-    color: #6c757d;
-}
-
-.verify-btn {
-    background-color: #a759cf;
-    color: white;
-    transition: background-color 0.3s ease;
-}
-
-.verify-btn:hover {
-    background-color: #da62a0;
-}
-
-.tech-categories {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.tech-category {
-    margin-bottom: 1rem;
-}
-
-.category-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-    position: relative;
-    padding-left: 1rem;
-    border-left: 4px solid #a759cf;
+    background-color: #eff6ff !important;
 }
 
 .tech-items {
@@ -196,123 +104,51 @@
 }
 
 .tech-item {
-    width: 150px;
-    height: 180px;
+    width: 140px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    border: 4px solid #333;
-    background-color: #0a0a0a;
-    box-shadow: 6px 6px 0px #1a1a1a;
-    transition: all 0.2s ease;
-    text-align: center;
-}
-
-.tech-item:hover {
-    box-shadow: 6px 6px 0px #da62a0;
-    border-color: #da62a0;
-    transform: translate(-4px, -4px);
 }
 
 .tech-icon {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(var(--v-theme-on-surface), 0.05);
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .tech-name {
-    font-weight: 500;
-    font-size: 1rem;
-    color: inherit;
-    margin: 0;
+    font-weight: 600;
+    color: #374151;
 }
 
 .dialog-card {
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: 16px;
+    background-color: white !important;
 }
-
 .dialog-title {
-    font-size: 1.8rem;
-    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827 !important;
 }
-
+.dialog-card .v-card-subtitle {
+    color: #4b5563 !important;
+}
 .full-description {
-    margin: 1rem 0;
+    color: #4b5563 !important;
     line-height: 1.6;
 }
-
-.technologies-section,
-.highlights-section {
-    margin-top: 1.5rem;
+.dialog-card .text-subtitle-1 {
+    color: #1f2937 !important;
 }
-
-.technology-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-}
-
 .tech-chip {
-    background: linear-gradient(to right, #a759cf, #da62a0);
-    color: white;
+    background-color: #f3f4f6;
+    color: #374151;
     font-weight: 500;
-}
-
-.highlights-list {
-    margin: 0.5rem 0 0 1.5rem;
-}
-
-.highlights-list li {
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
-}
-
-.github-btn {
-    color: #333;
-}
-
-.close-btn {
-    background-color: #f1f1f1;
-    color: #333;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .tabs-container {
-        flex-direction: column;
-        max-width: 90%;
-    }
-
-    .tab {
-        margin: 0.25rem 0;
-    }
-
-    .tech-items {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    }
-
-    .gradient-text {
-        font-size: 2.5rem;
-    }
-}
-
-.custom-btn{
-    font-size: 0.6rem;
-    font-family: 'Press Start 2P', monospace;
-    color: #ffffff;
-}
-
-.close-btn{
-    font-size: 0.6rem;
-    font-family: 'Press Start 2P', monospace;
-    color: #000000;
 }
