@@ -47,6 +47,7 @@ import PortofolioSection from './components/section/PortofolioSection.vue';
 import CertificateSection from './components/section/CertificateSection.vue';
 import TechStackSection from './components/section/TechStackSection.vue';
 import LinkedInSection from './components/section/LinkedInSection.vue';
+import ChatSection from './components/section/ChatSection.vue';
 
 const { windows } = useWindows();
 const { isDarkMode } = useAppTheme();
@@ -86,6 +87,8 @@ const getComponentForWindow = (id) => {
       return TechStackSection;
     case 'linkedin':
       return LinkedInSection;
+    case 'chat':
+      return ChatSection;
     default:
       return null;
   }

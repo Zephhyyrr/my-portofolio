@@ -15,7 +15,8 @@ const windowsState = reactive({
     { id: 'certificates', title: 'Certificates', icon: 'mdi-certificate', isOpen: false, isMinimized: false, isMaximized: true, isFocused: false, zIndex: 10, x: defaultX + 100, y: defaultY + 100, width: 850, height: 650 },
     { id: 'techstack', title: 'Tech Stack', icon: 'mdi-layers', isOpen: false, isMinimized: false, isMaximized: true, isFocused: false, zIndex: 10, x: defaultX + 150, y: defaultY + 150, width: 800, height: 600 },
     { id: 'linkedin', title: 'LinkedIn', icon: 'mdi-linkedin', isOpen: false, isMinimized: false, isMaximized: false, isFocused: false, zIndex: 10, x: defaultX + 200, y: defaultY + 200, width: 800, height: 600 },
-    { id: 'music', title: 'Music', icon: 'mdi-music', isOpen: false, isMinimized: false, isMaximized: false, isFocused: false, zIndex: 10, x: defaultX + 250, y: defaultY + 250, width: 400, height: 500 }
+    { id: 'music', title: 'Music', icon: 'mdi-music', isOpen: false, isMinimized: false, isMaximized: false, isFocused: false, zIndex: 10, x: defaultX + 250, y: defaultY + 250, width: 400, height: 500 },
+    { id: 'chat', title: 'Global Chat', icon: 'mdi-chat', isOpen: false, isMinimized: false, isMaximized: false, isFocused: false, zIndex: 10, x: defaultX + 300, y: defaultY + 100, width: 450, height: 650 }
   ],
   highestZIndex: 10,
 });
