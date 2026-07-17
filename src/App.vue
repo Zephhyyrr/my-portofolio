@@ -62,11 +62,11 @@ const desktopWindows = computed(() => windows);
 const isLoading = ref(true);
 
 const backgrounds = [
-  'https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=2069&auto=format&fit=crop', // original
-  'https://images.unsplash.com/photo-1554034483-04fda0d3507b?q=80&w=2070&auto=format&fit=crop', // dark aesthetic
-  'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop', // abstract gradient
-  'https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=2069&auto=format&fit=crop', // modern minimal dark (REPLACED BROKEN LINK)
-  'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=2070&auto=format&fit=crop'  // artistic dark gradient
+  'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop', // abstract colorful wave
+  'https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=2069&auto=format&fit=crop', // modern minimal abstract
+  'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=2070&auto=format&fit=crop', // artistic gradient
+  'https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=2029&auto=format&fit=crop', // abstract purple gradient
+  'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop'  // abstract colorful gradient
 ];
 const currentBackground = ref(backgrounds[Math.floor(Math.random() * backgrounds.length)]);
 
