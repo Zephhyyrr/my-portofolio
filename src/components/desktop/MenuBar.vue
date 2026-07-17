@@ -28,8 +28,15 @@
 
       <v-icon size="small" class="tray-icon">mdi-wifi</v-icon>
       <div class="tray-icon battery">
-        <v-icon size="small">mdi-battery-80</v-icon>
-        <span class="battery-text">85%</span>
+        <v-icon size="small">
+          {{ isCharging ? 'mdi-battery-charging' : 
+             (batteryLevel > 90 ? 'mdi-battery' : 
+              batteryLevel > 70 ? 'mdi-battery-80' : 
+              batteryLevel > 40 ? 'mdi-battery-50' : 
+              batteryLevel > 15 ? 'mdi-battery-20' : 'mdi-battery-outline') 
+          }}
+        </v-icon>
+        <span class="battery-text">{{ batteryLevel }}%</span>
       </div>
       <div class="tray-time-container" ref="calendarContainerEl">
         <div class="tray-time" @click="showCalendar = !showCalendar">
@@ -75,6 +82,8 @@ onClickOutside(calendarContainerEl, () => {
 
 const currentTime = ref('');
 const currentDate = ref('');
+const batteryLevel = ref(85);
+const isCharging = ref(false);
 let timer = null;
 
 const updateTime = () => {
@@ -86,6 +95,22 @@ const updateTime = () => {
 onMounted(() => {
   updateTime();
   timer = setInterval(updateTime, 1000);
+  
+  if (navigator.getBattery) {
+    navigator.getBattery().then(battery => {
+      batteryLevel.value = Math.floor(battery.level * 100);
+      isCharging.value = battery.charging;
+      
+      battery.addEventListener('levelchange', () => {
+        batteryLevel.value = Math.floor(battery.level * 100);
+      });
+      battery.addEventListener('chargingchange', () => {
+        isCharging.value = battery.charging;
+      });
+    }).catch(() => {
+      console.warn("Battery API error or denied");
+    });
+  }
 });
 
 onUnmounted(() => {
@@ -265,4 +290,17 @@ onUnmounted(() => {
   z-index: 10001;
 }
 
+@media (max-width: 768px) {
+  .date {
+    display: none;
+  }
+  .tray-time {
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+  .profile-name {
+    display: none;
+  }
+}
 </style>

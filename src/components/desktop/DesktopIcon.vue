@@ -1,5 +1,5 @@
 <template>
-  <div class="desktop-icon" @dblclick="handleDoubleClick" @click="handleClick">
+  <div class="desktop-icon" @click="handleAction">
     <div class="icon-box" :class="windowData.id">
       <v-icon size="large" color="white">{{ windowData.icon }}</v-icon>
     </div>
@@ -21,17 +21,11 @@ const props = defineProps({
 const { openWindow, focusWindow } = useWindows();
 const musicState = useMusicState();
 
-const handleDoubleClick = () => {
+const handleAction = () => {
   if (props.windowData.id === 'music') {
     musicState.toggleVisibility();
   } else {
     openWindow(props.windowData.id);
-  }
-};
-
-const handleClick = () => {
-  if (props.windowData.id !== 'music') {
-    focusWindow(props.windowData.id);
   }
 };
 </script>

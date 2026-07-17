@@ -5,7 +5,7 @@
       Catatan Cepat
     </div>
     <ul class="note-content">
-      <li>Klik ganda icon di desktop untuk membuka aplikasi.</li>
+      <li>Klik icon di desktop untuk membuka aplikasi.</li>
       <li>Atau klik Start Menu di kiri bawah.</li>
       <li>Tahan dan geser judul jendela untuk memindahkan.</li>
     </ul>
@@ -65,7 +65,7 @@
 
 @media (max-width: 768px) {
   .sticky-note {
-    top: 90px;
+    top: 130px;
     right: 15px;
     transform: scale(0.7) rotate(2deg);
     transform-origin: top right;
