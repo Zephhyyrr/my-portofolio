@@ -175,7 +175,7 @@ const confirmName = () => {
 };
 
 const isOwnMessage = (msg) => {
-  return msg.userId === currentUserId.value;
+  return msg.userId === currentUserId.value || (msg.name && userName.value && msg.name.trim() === userName.value.trim());
 };
 
 const formatTime = (timestamp) => {
@@ -294,7 +294,7 @@ const sendMessage = async () => {
 
 .message-bubble {
   position: relative;
-  padding: 6px 7px 8px 9px;
+  padding: 6px 7px 20px 9px;
   border-radius: 7.5px;
   box-shadow: 0 1px 0.5px rgba(11, 20, 26, 0.13);
   display: flex;
@@ -340,7 +340,7 @@ const sendMessage = async () => {
   line-height: 19px;
   color: #111b21;
   word-wrap: break-word;
-  padding-right: 40px; /* Space for time */
+  padding-right: 35px; /* Space for time next to text if short */
 }
 
 .message-time {
