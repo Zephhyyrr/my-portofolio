@@ -1,22 +1,8 @@
 <template>
   <div class="loading-screen" :class="{ 'fade-out': isFadingOut }">
     <div class="loading-content">
-      <div v-if="!isReady" class="spinner"></div>
-      <div v-if="!isReady" class="loading-text">Starting FIRMAN OS...</div>
-      
-      <div v-if="isReady" class="welcome-container fade-in">
-        <img src="/foto_firman.png" alt="Profile" class="profile-pic" />
-        <h2 class="welcome-text">Firman Ardiansyah</h2>
-        <v-btn
-          color="primary"
-          rounded="pill"
-          size="large"
-          class="enter-btn mt-4"
-          @click="enterOS"
-        >
-          Masuk / Enter
-        </v-btn>
-      </div>
+      <div class="spinner"></div>
+      <div class="loading-text">Starting FIRMAN OS...</div>
     </div>
   </div>
 </template>
@@ -26,21 +12,16 @@ import { ref, onMounted } from 'vue';
 
 const emit = defineEmits(['loaded']);
 const isFadingOut = ref(false);
-const isReady = ref(false);
 
 onMounted(() => {
-  // Simulate loading time, then show the Enter button
+  // Simulate loading time
   setTimeout(() => {
-    isReady.value = true;
+    isFadingOut.value = true;
+    setTimeout(() => {
+      emit('loaded');
+    }, 500); // Wait for fade out animation
   }, 1500); // 1.5 seconds loading
 });
-
-const enterOS = () => {
-  isFadingOut.value = true;
-  setTimeout(() => {
-    emit('loaded');
-  }, 500); // Wait for fade out animation
-};
 </script>
 
 <style scoped>
@@ -90,43 +71,5 @@ const enterOS = () => {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-.welcome-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.profile-pic {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  border: 3px solid white;
-}
-
-.welcome-text {
-  color: #333;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.enter-btn {
-  text-transform: none;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.fade-in {
-  animation: fadeIn 0.5s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 </style>
