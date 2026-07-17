@@ -89,7 +89,7 @@ const initPlayer = async () => {
     width: '1',
     videoId: currentTrack.value.videoId,
     playerVars: {
-      autoplay: 1, // Try to autoplay on load
+      autoplay: 0, // Disable autoplay for consistency
       controls: 0,
       disablekb: 1,
       fs: 0,
@@ -106,8 +106,6 @@ const initPlayer = async () => {
 const onPlayerReady = () => {
   duration.value = player.getDuration() || 0;
   player.setVolume(musicState.volume);
-  // Attempt to play immediately (Note: browsers may block this until user interaction)
-  player.playVideo();
 };
 
 watch(() => musicState.volume, (newVolume) => {
