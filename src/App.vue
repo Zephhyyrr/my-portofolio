@@ -62,11 +62,11 @@ const desktopWindows = computed(() => windows);
 const isLoading = ref(true);
 
 const backgrounds = [
-  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop', // earth from space / tech network
-  'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop', // retro synthwave
-  'https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=2069&auto=format&fit=crop', // dark space
-  'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop', // tech circuit board
-  'https://images.unsplash.com/photo-1533134486753-c833f0edde8c?q=80&w=2070&auto=format&fit=crop'  // neon dark aesthetic
+  'https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=2069&auto=format&fit=crop', // original
+  'https://images.unsplash.com/photo-1554034483-04fda0d3507b?q=80&w=2070&auto=format&fit=crop', // dark aesthetic
+  'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop', // abstract gradient
+  'https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=2069&auto=format&fit=crop', // modern minimal dark (REPLACED BROKEN LINK)
+  'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=2070&auto=format&fit=crop'  // artistic dark gradient
 ];
 const currentBackground = ref(backgrounds[Math.floor(Math.random() * backgrounds.length)]);
 
