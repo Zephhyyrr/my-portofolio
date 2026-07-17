@@ -153,7 +153,7 @@ const windowStyle = computed(() => {
       left: '0px',
       top: '0px', // Top of screen
       width: '100vw',
-      height: 'calc(100vh - 48px)', // Leave room for bottom taskbar
+      height: 'calc(100dvh - 48px)', // Leave room for bottom taskbar
       borderRadius: '0px'
     };
   }
@@ -376,5 +376,32 @@ const windowStyle = computed(() => {
   height: 100%;
   border: none;
   background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .browser-window {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100dvh - 48px) !important;
+    border-radius: 0 !important;
+  }
+  
+  .browser-header {
+    cursor: default; /* Disable grab cursor on mobile since it's full screen */
+  }
+  
+  .tabs-area {
+    padding-left: 4px;
+    gap: 4px;
+  }
+  
+  .active-tab, .inactive-tab {
+    padding: 0 10px;
+  }
+  
+  .tab-title {
+    max-width: 80px; /* Shorter titles on mobile */
+  }
 }
 </style>

@@ -97,20 +97,20 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden; 
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   font-family: 'Inter', sans-serif;
 }
 
 .desktop-environment {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
 .desktop-background {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -124,7 +124,7 @@ html, body {
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  height: calc(100vh - 48px); /* Adjust for bottom Taskbar */
+  height: calc(100dvh - 48px); /* Adjust for bottom Taskbar */
   flex-wrap: wrap; 
 }
 
@@ -133,7 +133,7 @@ html, body {
   background: transparent !important;
 }
 .v-application__wrap {
-  min-height: 100vh !important;
+  min-height: 100dvh !important;
 }
 
 /* Animations */

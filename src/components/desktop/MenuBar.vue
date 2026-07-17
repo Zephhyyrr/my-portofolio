@@ -95,7 +95,7 @@ onUnmounted(() => {
 
 <style scoped>
 .mac-menubar {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
