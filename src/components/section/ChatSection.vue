@@ -146,7 +146,7 @@ onMounted(() => {
 
   if (db) {
     const q = query(
-      collection(db, 'chat_messages'), 
+      collection(db, 'comments'), 
       orderBy('timestamp', 'asc'),
       limit(100)
     );
@@ -206,7 +206,7 @@ const sendMessage = async () => {
   newMessage.value = ''; // clear input immediately for better UX
   
   try {
-    await addDoc(collection(db, 'chat_messages'), {
+    await addDoc(collection(db, 'comments'), {
       name: userName.value.trim(),
       userId: currentUserId.value,
       message: msgText,

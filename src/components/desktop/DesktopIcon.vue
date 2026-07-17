@@ -74,6 +74,9 @@ const handleAction = () => {
 .techstack {
   background-color: #e74c3c;
 }
+.chat {
+  background-color: #25d366;
+}
 
 .icon-label {
   color: white;
