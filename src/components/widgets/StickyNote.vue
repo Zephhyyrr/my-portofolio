@@ -2,12 +2,12 @@
   <div class="sticky-note">
     <div class="note-header">
       <v-icon size="small">mdi-note-edit-outline</v-icon>
-      Catatan Cepat
+      Quick Notes
     </div>
     <ul class="note-content">
-      <li>Klik icon di desktop untuk membuka aplikasi.</li>
-      <li>Atau klik Start Menu di kiri bawah.</li>
-      <li>Tahan dan geser judul jendela untuk memindahkan.</li>
+      <li>Click the desktop icon to open an app.</li>
+      <li>Or click the Start Menu at the bottom left.</li>
+      <li>Hold and drag a window title to move it.</li>
     </ul>
   </div>
 </template>

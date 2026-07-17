@@ -7,7 +7,7 @@
       <div class="temp" v-if="!loading">{{ weatherData.temp }}°C</div>
       <div class="temp" v-else>--°C</div>
       <div class="desc" v-if="!loading">{{ weatherData.text }}</div>
-      <div class="desc" v-else>Memuat...</div>
+      <div class="desc" v-else>Loading...</div>
       <div class="location">
         <v-icon size="x-small">mdi-map-marker-outline</v-icon>
         {{ weatherData.location }}
@@ -22,34 +22,34 @@ import { ref, onMounted } from 'vue';
 const loading = ref(true);
 const weatherData = ref({
   temp: '--',
-  text: 'Memuat...',
+  text: 'Loading...',
   icon: 'mdi-weather-cloudy',
   color: '#95a5a6',
-  location: 'Mencari lokasi...'
+  location: 'Finding location...'
 });
 
 const weatherCodes = {
-  0: { text: 'Cerah', icon: 'mdi-weather-sunny', color: '#f1c40f' },
-  1: { text: 'Cerah Berawan', icon: 'mdi-weather-partly-cloudy', color: '#f39c12' },
-  2: { text: 'Berawan', icon: 'mdi-weather-cloudy', color: '#95a5a6' },
-  3: { text: 'Mendung', icon: 'mdi-weather-cloudy', color: '#7f8c8d' },
-  45: { text: 'Berkabut', icon: 'mdi-weather-fog', color: '#bdc3c7' },
-  48: { text: 'Kabut Es', icon: 'mdi-weather-fog', color: '#bdc3c7' },
-  51: { text: 'Gerimis Ringan', icon: 'mdi-weather-rainy', color: '#3498db' },
-  53: { text: 'Gerimis', icon: 'mdi-weather-rainy', color: '#3498db' },
-  55: { text: 'Gerimis Lebat', icon: 'mdi-weather-pouring', color: '#2980b9' },
-  61: { text: 'Hujan Ringan', icon: 'mdi-weather-rainy', color: '#3498db' },
-  63: { text: 'Hujan Sedang', icon: 'mdi-weather-pouring', color: '#2980b9' },
-  65: { text: 'Hujan Lebat', icon: 'mdi-weather-pouring', color: '#2980b9' },
-  71: { text: 'Salju Ringan', icon: 'mdi-weather-snowy', color: '#ecf0f1' },
-  73: { text: 'Salju Sedang', icon: 'mdi-weather-snowy', color: '#ecf0f1' },
-  75: { text: 'Salju Lebat', icon: 'mdi-weather-snowy-heavy', color: '#ecf0f1' },
-  80: { text: 'Hujan Badai Ringan', icon: 'mdi-weather-pouring', color: '#2c3e50' },
-  81: { text: 'Hujan Badai', icon: 'mdi-weather-pouring', color: '#2c3e50' },
-  82: { text: 'Hujan Badai Lebat', icon: 'mdi-weather-lightning-rainy', color: '#2c3e50' },
-  95: { text: 'Badai Petir', icon: 'mdi-weather-lightning', color: '#f39c12' },
-  96: { text: 'Badai Petir Ringan', icon: 'mdi-weather-lightning-rainy', color: '#f39c12' },
-  99: { text: 'Badai Petir Lebat', icon: 'mdi-weather-lightning-rainy', color: '#f39c12' }
+  0: { text: 'Sunny', icon: 'mdi-weather-sunny', color: '#f1c40f' },
+  1: { text: 'Partly Cloudy', icon: 'mdi-weather-partly-cloudy', color: '#f39c12' },
+  2: { text: 'Cloudy', icon: 'mdi-weather-cloudy', color: '#95a5a6' },
+  3: { text: 'Overcast', icon: 'mdi-weather-cloudy', color: '#7f8c8d' },
+  45: { text: 'Fog', icon: 'mdi-weather-fog', color: '#bdc3c7' },
+  48: { text: 'Freezing Fog', icon: 'mdi-weather-fog', color: '#bdc3c7' },
+  51: { text: 'Light Drizzle', icon: 'mdi-weather-rainy', color: '#3498db' },
+  53: { text: 'Drizzle', icon: 'mdi-weather-rainy', color: '#3498db' },
+  55: { text: 'Heavy Drizzle', icon: 'mdi-weather-pouring', color: '#2980b9' },
+  61: { text: 'Light Rain', icon: 'mdi-weather-rainy', color: '#3498db' },
+  63: { text: 'Moderate Rain', icon: 'mdi-weather-pouring', color: '#2980b9' },
+  65: { text: 'Heavy Rain', icon: 'mdi-weather-pouring', color: '#2980b9' },
+  71: { text: 'Light Snow', icon: 'mdi-weather-snowy', color: '#ecf0f1' },
+  73: { text: 'Moderate Snow', icon: 'mdi-weather-snowy', color: '#ecf0f1' },
+  75: { text: 'Heavy Snow', icon: 'mdi-weather-snowy-heavy', color: '#ecf0f1' },
+  80: { text: 'Light Rain Showers', icon: 'mdi-weather-pouring', color: '#2c3e50' },
+  81: { text: 'Rain Showers', icon: 'mdi-weather-pouring', color: '#2c3e50' },
+  82: { text: 'Heavy Rain Showers', icon: 'mdi-weather-lightning-rainy', color: '#2c3e50' },
+  95: { text: 'Thunderstorm', icon: 'mdi-weather-lightning', color: '#f39c12' },
+  96: { text: 'Light Thunderstorm', icon: 'mdi-weather-lightning-rainy', color: '#f39c12' },
+  99: { text: 'Heavy Thunderstorm', icon: 'mdi-weather-lightning-rainy', color: '#f39c12' }
 };
 
 const fetchWeather = async (lat, lon) => {
@@ -60,16 +60,16 @@ const fetchWeather = async (lat, lon) => {
     const current = weatherJson.current_weather;
     
     // 2. Fetch location name (Reverse Geocoding)
-    let locName = 'Lokasi Anda';
+    let locName = 'Your Location';
     try {
       const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`);
       const geoJson = await geoRes.json();
-      locName = geoJson.address.city || geoJson.address.town || geoJson.address.village || geoJson.address.county || geoJson.address.state || 'Lokasi Anda';
+      locName = geoJson.address.city || geoJson.address.town || geoJson.address.village || geoJson.address.county || geoJson.address.state || 'Your Location';
     } catch (e) {
-      console.warn("Gagal mendapatkan nama kota", e);
+      console.warn("Failed to get city name", e);
     }
 
-    const info = weatherCodes[current.weathercode] || { text: 'Tidak diketahui', icon: 'mdi-weather-cloudy', color: '#95a5a6' };
+    const info = weatherCodes[current.weathercode] || { text: 'Unknown', icon: 'mdi-weather-cloudy', color: '#95a5a6' };
     
     weatherData.value = {
       temp: current.temperature,
@@ -80,8 +80,8 @@ const fetchWeather = async (lat, lon) => {
     };
     loading.value = false;
   } catch (error) {
-    console.error("Gagal memuat cuaca:", error);
-    weatherData.value.location = 'Gagal memuat';
+    console.error("Failed to load weather:", error);
+    weatherData.value.location = 'Failed to load';
     weatherData.value.text = 'Error';
     loading.value = false;
   }

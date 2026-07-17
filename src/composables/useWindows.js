@@ -6,16 +6,16 @@ const defaultY = typeof window !== 'undefined' ? window.innerHeight / 2 - 300 : 
 
 const windowsState = reactive({
   windows: [
-    { id: 'about', title: 'Tentang Saya', icon: 'mdi-account', isOpen: false, isMinimized: false, isMaximized: true, isFocused: false, zIndex: 10, x: defaultX, y: defaultY, width: 800, height: 600 },
+    { id: 'about', title: 'About Me', icon: 'mdi-account', isOpen: false, isMinimized: false, isMaximized: true, isFocused: false, zIndex: 10, x: defaultX, y: defaultY, width: 800, height: 600 },
     { 
-      id: 'projects', title: 'Proyek', icon: 'mdi-folder-multiple-image', isOpen: false, isMinimized: false, isMaximized: true, isFocused: false, zIndex: 10, x: defaultX + 50, y: defaultY + 50, width: 900, height: 700,
-      tabs: [{ id: 'main', title: 'Proyek Saya', type: 'component' }],
+      id: 'projects', title: 'Projects', icon: 'mdi-folder-multiple-image', isOpen: false, isMinimized: false, isMaximized: true, isFocused: false, zIndex: 10, x: defaultX + 50, y: defaultY + 50, width: 900, height: 700,
+      tabs: [{ id: 'main', title: 'My Projects', type: 'component' }],
       activeTabId: 'main'
     },
-    { id: 'certificates', title: 'Sertifikat', icon: 'mdi-certificate', isOpen: false, isMinimized: false, isMaximized: true, isFocused: false, zIndex: 10, x: defaultX + 100, y: defaultY + 100, width: 850, height: 650 },
+    { id: 'certificates', title: 'Certificates', icon: 'mdi-certificate', isOpen: false, isMinimized: false, isMaximized: true, isFocused: false, zIndex: 10, x: defaultX + 100, y: defaultY + 100, width: 850, height: 650 },
     { id: 'techstack', title: 'Tech Stack', icon: 'mdi-layers', isOpen: false, isMinimized: false, isMaximized: true, isFocused: false, zIndex: 10, x: defaultX + 150, y: defaultY + 150, width: 800, height: 600 },
     { id: 'linkedin', title: 'LinkedIn', icon: 'mdi-linkedin', isOpen: false, isMinimized: false, isMaximized: false, isFocused: false, zIndex: 10, x: defaultX + 200, y: defaultY + 200, width: 800, height: 600 },
-    { id: 'music', title: 'Musik', icon: 'mdi-music', isOpen: false, isMinimized: false, isMaximized: false, isFocused: false, zIndex: 10, x: defaultX + 250, y: defaultY + 250, width: 400, height: 500 }
+    { id: 'music', title: 'Music', icon: 'mdi-music', isOpen: false, isMinimized: false, isMaximized: false, isFocused: false, zIndex: 10, x: defaultX + 250, y: defaultY + 250, width: 400, height: 500 }
   ],
   highestZIndex: 10,
 });
@@ -26,6 +26,9 @@ export function useWindows() {
     if (win) {
       if (!win.isOpen) {
         win.isOpen = true;
+      }
+      if (win.isMinimized) {
+        win.isMinimized = false;
       }
       focusWindow(id);
     }

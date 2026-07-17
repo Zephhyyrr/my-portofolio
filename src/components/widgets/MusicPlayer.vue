@@ -2,7 +2,7 @@
   <div class="music-player-widget" :class="{ 'is-hidden': !musicState.isVisible }">
     <div class="player-header">
       <v-icon size="small" class="mr-2">mdi-music-note</v-icon>
-      DAFTAR PUTAR YOUTUBE
+      YOUTUBE PLAYLIST
       <v-icon size="small" class="close-btn" @click="toggleVisibility">mdi-close</v-icon>
     </div>
 

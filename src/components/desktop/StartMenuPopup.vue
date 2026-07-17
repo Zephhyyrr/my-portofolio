@@ -1,7 +1,7 @@
 <template>
   <div class="start-menu-popup" @click.stop>
     <div class="pinned-section">
-      <div class="section-title">APLIKASI DISEMATKAN</div>
+      <div class="section-title">PINNED APPS</div>
       <div class="apps-grid">
         <div 
           v-for="win in windows" 
@@ -66,7 +66,7 @@ const handleSysClick = (action) => {
       toggleDarkMode();
       break;
     case 'lock':
-      alert('Sistem terkunci! (Simulasi)');
+      alert('System locked! (Simulation)');
       break;
     case 'restart':
       window.location.reload();

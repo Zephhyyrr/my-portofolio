@@ -88,8 +88,8 @@ let timer = null;
 
 const updateTime = () => {
   const now = new Date();
-  currentTime.value = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-  currentDate.value = now.toLocaleDateString('id-ID', { weekday: 'short', day: '2-digit', month: 'short' });
+  currentTime.value = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  currentDate.value = now.toLocaleDateString('en-US', { weekday: 'short', day: '2-digit', month: 'short' });
 };
 
 onMounted(() => {
