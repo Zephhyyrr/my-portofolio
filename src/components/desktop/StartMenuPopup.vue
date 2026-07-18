@@ -42,10 +42,12 @@
 <script setup>
 import { useWindows } from '@/composables/useWindows';
 import { useTheme } from '@/composables/useTheme';
+import { useSystemState } from '@/composables/useSystemState';
 
 const emit = defineEmits(['close']);
-const { windows, focusWindow, openWindow, closeAllWindows } = useWindows();
+const { windows, focusWindow, openWindow } = useWindows();
 const { isDarkMode, toggleDarkMode } = useTheme();
+const { lockSystem, requestShutdown } = useSystemState();
 
 const handleAppClick = (id) => {
   const win = windows.find(w => w.id === id);
@@ -66,13 +68,14 @@ const handleSysClick = (action) => {
       toggleDarkMode();
       break;
     case 'lock':
-      alert('System locked! (Simulation)');
+      lockSystem();
+      emit('close');
       break;
     case 'restart':
       window.location.reload();
       break;
     case 'power':
-      closeAllWindows();
+      requestShutdown();
       emit('close');
       break;
   }

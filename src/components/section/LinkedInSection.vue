@@ -10,11 +10,11 @@
       </div>
 
       <div class="alert-box">
-        Catatan: LinkedIn memblokir halamannya untuk ditampilkan di dalam aplikasi web lain (iframe) demi alasan keamanan (X-Frame-Options).
+        Note: LinkedIn blocks its pages from being displayed within other web applications (iframes) for security reasons (X-Frame-Options).
       </div>
 
       <a href="https://www.linkedin.com/in/firman-ardiansyah-492637237/" target="_blank" class="linkedin-btn">
-        Buka Profil LinkedIn
+        Open LinkedIn Profile
         <v-icon size="small" class="ml-2">mdi-open-in-new</v-icon>
       </a>
     </div>

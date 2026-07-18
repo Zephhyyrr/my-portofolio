@@ -25,6 +25,28 @@
         <component :is="getComponentForWindow(win.id)" :windowData="win" />
       </WindowFrame>
     </div>
+
+    <!-- System Overlays -->
+    <LockScreen v-if="isLocked" />
+    <PowerScreen v-if="isPoweredOff" />
+
+    <!-- Shutdown Confirmation Dialog -->
+    <v-dialog v-model="isShuttingDown" max-width="400" persistent>
+      <v-card :theme="isDarkMode ? 'dark' : 'light'" class="rounded-xl pa-2">
+        <v-card-title class="text-h6 font-weight-bold d-flex align-center">
+          <v-icon color="error" class="mr-3">mdi-alert</v-icon>
+          Shut Down
+        </v-card-title>
+        <v-card-text class="pt-2 pb-4">
+          Are you sure you want to shut down the system?
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn variant="text" @click="cancelShutdown">Cancel</v-btn>
+          <v-btn color="error" variant="flat" class="px-6 rounded-lg" @click="confirmShutdown">Shut Down</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -41,6 +63,10 @@ import MenuBar from './components/desktop/MenuBar.vue';
 import WeatherWidget from './components/widgets/WeatherWidget.vue';
 import StickyNote from './components/widgets/StickyNote.vue';
 import MusicPlayer from './components/widgets/MusicPlayer.vue';
+import LockScreen from './components/desktop/LockScreen.vue';
+import PowerScreen from './components/desktop/PowerScreen.vue';
+
+import { useSystemState } from './composables/useSystemState';
 
 import AboutSection from './components/section/AboutSection.vue';
 import PortofolioSection from './components/section/PortofolioSection.vue';
@@ -52,6 +78,7 @@ import ChatSection from './components/section/ChatSection.vue';
 const { windows } = useWindows();
 const { isDarkMode } = useAppTheme();
 const vuetifyTheme = useVuetifyTheme();
+const { isLocked, isShuttingDown, isPoweredOff, confirmShutdown, cancelShutdown } = useSystemState();
 
 watch(isDarkMode, (newVal) => {
   vuetifyTheme.global.name.value = newVal ? 'dark' : 'light';
