@@ -1,9 +1,12 @@
 <template>
-  <div class="music-player-widget" :class="{ 'is-hidden': !musicState.isVisible }">
-    <div class="player-header">
+  <div class="music-player-widget" 
+       :class="{ 'is-hidden': !musicState.isVisible, 'is-dragging': isDragging }"
+       :style="[style, { position: 'fixed', zIndex: 100 }]"
+       ref="widgetRef">
+    <div class="player-header" ref="playerHeaderRef">
       <v-icon size="small" class="mr-2">mdi-music-note</v-icon>
       YOUTUBE PLAYLIST
-      <v-icon size="small" class="close-btn" @click="toggleVisibility">mdi-close</v-icon>
+      <v-icon size="small" class="close-btn" @click.stop="toggleVisibility">mdi-close</v-icon>
     </div>
 
     <div class="track-info">
@@ -36,9 +39,32 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
+import { useDraggable } from '@vueuse/core';
 import { useMusicState } from '@/composables/useMusicState';
 
 const { musicState, toggleVisibility } = useMusicState();
+
+const widgetRef = ref(null);
+const playerHeaderRef = ref(null);
+
+const getInitialPosition = () => {
+  if (typeof window === 'undefined') return { x: 0, y: 0 };
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const widgetWidth = w > 768 ? 300 : Math.min(340, w - 32);
+  const widgetHeight = 150; // approximate collapsed height
+  
+  const x = w > 768 ? w - 340 : (w - widgetWidth) / 2;
+  const y = h - widgetHeight - 150; // start position
+  
+  return { x, y };
+};
+
+const { style, isDragging } = useDraggable(widgetRef, {
+  initialValue: getInitialPosition(),
+  handle: playerHeaderRef,
+});
+
 
 // Playlist - tambahkan video ID YouTube dan info lagu di sini
 const playlist = ref([
@@ -193,9 +219,6 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .music-player-widget {
-  position: absolute;
-  bottom: 80px;
-  right: 40px;
   width: 300px;
   background-color: rgba(24, 24, 24, 0.92);
   backdrop-filter: blur(20px);
@@ -203,17 +226,28 @@ onBeforeUnmount(() => {
   padding: 16px;
   color: white;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.06);
-  z-index: 50;
   font-family: 'Inter', sans-serif;
-  transform-origin: bottom right;
+  transform-origin: center center;
+  transition: opacity 0.3s ease, visibility 0.4s;
+}
+
+.music-player-widget:not(.is-dragging) {
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, visibility 0.4s;
 }
 
 .music-player-widget.is-hidden {
-  transform: scale(0) translate(100px, 100px);
+  transform: scale(0.8) !important;
   opacity: 0;
   visibility: hidden;
 }
+
+.player-header {
+  cursor: grab;
+}
+.player-header:active {
+  cursor: grabbing;
+}
+
 
 .player-header {
   display: flex;
@@ -311,17 +345,8 @@ onBeforeUnmount(() => {
 
 @media (max-width: 768px) {
   .music-player-widget {
-    bottom: 70px;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
     width: calc(100% - 32px);
     max-width: 340px;
-    transform-origin: bottom center;
-  }
-  
-  .music-player-widget.is-hidden {
-    transform: translateX(-50%) scale(0) translateY(100px);
   }
 }
 </style>
