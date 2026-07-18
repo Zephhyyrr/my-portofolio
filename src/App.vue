@@ -1,5 +1,5 @@
 <template>
-  <div class="desktop-environment">
+  <v-app class="desktop-environment">
     <LoadingScreen v-if="isLoading" @loaded="handleLoaded" />
 
     <div v-show="!isLoading" class="desktop-background" :style="{ backgroundImage: `url('${currentBackground}')` }">
@@ -47,7 +47,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </div>
+  </v-app>
 </template>
 
 <script setup>
@@ -170,11 +170,6 @@ html, body {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-/* Dark Theme Global Styles */
-body.dark-theme .desktop-background {
-  background-color: #121212;
 }
 
 body.dark-theme .mac-menubar {
@@ -316,6 +311,11 @@ body.dark-theme .demo-btn:hover {
 /* About Me Dark Mode */
 body.dark-theme .subtitle-text {
     color: #f1f5f9 !important;
+}
+
+/* Dark Theme Global Styles */
+body.dark-theme .desktop-background {
+  background-color: #121212;
 }
 
 /* LinkedIn Card Dark Mode */

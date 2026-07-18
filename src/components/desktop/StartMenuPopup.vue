@@ -66,6 +66,7 @@ const handleSysClick = (action) => {
       break;
     case 'theme':
       toggleDarkMode();
+      emit('close');
       break;
     case 'lock':
       lockSystem();
