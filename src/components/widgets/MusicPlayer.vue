@@ -75,7 +75,17 @@ const playlist = ref([
   { videoId: 'BrGElm2d9ck', title: 'Multo', artist: 'Cup of Joe' },
   { videoId: '5F28ye50-Kc', title: 'Teh Hijau', artist: 'Tulus' },
   { videoId: 'fKgoo_KT6aM', title: "You're On Your Own, Kid", artist: 'Taylor Swift' },
-  { videoId: 'fFMPxt-XNIk', title: 'Message In A Bottle', artist: 'Taylor Swift' }
+  { videoId: 'fFMPxt-XNIk', title: 'Message In A Bottle', artist: 'Taylor Swift' },
+  { videoId: 'tW3KekLxXpg', title: 'Foto kita blur', artist: 'Sal Priadi' },
+  { videoId: 'VaYlPJte3Jk', title: 'Running', artist: '가호 (Gaho)' },
+  { videoId: 'ro3tNNE9wiw', title: 'Take A Chance With Me', artist: 'NIKI' },
+  { videoId: 'iOYXNfc23pk', title: 'High School in Jakarta', artist: 'NIKI' },
+  { videoId: 'c-8abSPAPOU', title: 'back to friends', artist: 'Sombr' },
+  { videoId: 'BIAlNtIhajM', title: 'Backburner', artist: 'NIKI' },
+  { videoId: '7SqC7_f_-0M', title: 'All Too Well (10 Minute Version)', artist: 'Taylor Swift' },
+  { videoId: 'uWRwLfWwZe0', title: 'You & I', artist: 'One Direction' },
+  { videoId: '2EiK3RnPu7A', title: 'Angin Rindu', artist: 'Rony Parulian' },
+  { videoId: 'k1BfsO0mxWQ', title: 'Dan...', artist: 'Sheila On 7' }
 ]);
 
 // Randomize first song
