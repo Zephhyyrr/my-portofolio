@@ -31,6 +31,13 @@ export function useWindows() {
       if (win.isMinimized) {
         win.isMinimized = false;
       }
+      
+      // Fix: reset default tabs if all tabs were closed
+      if (win.tabs && win.tabs.length === 0) {
+        win.tabs.push({ id: 'main', title: win.title, type: 'component' });
+        win.activeTabId = 'main';
+      }
+      
       focusWindow(id);
     }
   };

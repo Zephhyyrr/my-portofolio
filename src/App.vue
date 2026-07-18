@@ -15,7 +15,7 @@
 
       <WeatherWidget />
       <StickyNote />
-      <MusicPlayer />
+      <MusicPlayer v-if="!isPoweredOff" />
 
       <WindowFrame 
         v-for="win in windows" 
