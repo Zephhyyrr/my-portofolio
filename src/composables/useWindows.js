@@ -125,6 +125,24 @@ export function useWindows() {
       }
   };
 
+  const updateWindowSize = (id, width, height) => {
+      const win = windowsState.windows.find(w => w.id === id);
+      if (win) {
+          win.width = width;
+          win.height = height;
+      }
+  };
+
+  const updateWindowBounds = (id, x, y, width, height) => {
+      const win = windowsState.windows.find(w => w.id === id);
+      if (win) {
+          if (x !== undefined) win.x = x;
+          if (y !== undefined) win.y = y;
+          if (width !== undefined) win.width = width;
+          if (height !== undefined) win.height = height;
+      }
+  };
+
   return {
     windows: windowsState.windows,
     openWindow,
@@ -137,6 +155,8 @@ export function useWindows() {
     minimizeWindow,
     toggleMaximizeWindow,
     focusWindow,
-    updateWindowPosition
+    updateWindowPosition,
+    updateWindowSize,
+    updateWindowBounds
   };
 }

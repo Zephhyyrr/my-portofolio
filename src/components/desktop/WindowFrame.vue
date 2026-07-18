@@ -82,11 +82,23 @@
         ></iframe>
       </template>
     </div>
+
+    <!-- Resize Handles -->
+    <template v-if="!windowData.isMaximized">
+      <div class="resize-handle n" @mousedown.stop="startResize($event, 'n')"></div>
+      <div class="resize-handle s" @mousedown.stop="startResize($event, 's')"></div>
+      <div class="resize-handle e" @mousedown.stop="startResize($event, 'e')"></div>
+      <div class="resize-handle w" @mousedown.stop="startResize($event, 'w')"></div>
+      <div class="resize-handle nw" @mousedown.stop="startResize($event, 'nw')"></div>
+      <div class="resize-handle ne" @mousedown.stop="startResize($event, 'ne')"></div>
+      <div class="resize-handle sw" @mousedown.stop="startResize($event, 'sw')"></div>
+      <div class="resize-handle se" @mousedown.stop="startResize($event, 'se')"></div>
+    </template>
   </div>
 </template>
 
 <script setup>
-import { ref, watch, computed } from 'vue';
+import { ref, watch, computed, onBeforeUnmount } from 'vue';
 import { useDraggable } from '@vueuse/core';
 import { useWindows } from '@/composables/useWindows';
 
@@ -97,7 +109,7 @@ const props = defineProps({
   }
 });
 
-const { minimizeWindow, closeWindow, focusWindow, toggleMaximizeWindow, updateWindowPosition, setActiveTab, closeTab, addTabToWindow } = useWindows();
+const { minimizeWindow, closeWindow, focusWindow, toggleMaximizeWindow, updateWindowPosition, updateWindowBounds, setActiveTab, closeTab, addTabToWindow } = useWindows();
 
 const currentUrl = computed(() => {
   if (props.windowData.tabs && props.windowData.activeTabId !== 'main') {
@@ -164,6 +176,70 @@ const windowStyle = computed(() => {
     width: `${props.windowData.width}px`,
     height: `${props.windowData.height}px`
   };
+});
+
+let resizeState = null;
+const MIN_WIDTH = 300;
+const MIN_HEIGHT = 200;
+
+const startResize = (e, direction) => {
+  e.preventDefault();
+  focusWindow(props.windowData.id);
+  
+  resizeState = {
+    direction,
+    startX: e.clientX,
+    startY: e.clientY,
+    initialX: props.windowData.x,
+    initialY: props.windowData.y,
+    initialWidth: props.windowData.width,
+    initialHeight: props.windowData.height
+  };
+  
+  window.addEventListener('mousemove', onResizeMove);
+  window.addEventListener('mouseup', onResizeEnd);
+};
+
+const onResizeMove = (e) => {
+  if (!resizeState) return;
+  
+  const dx = e.clientX - resizeState.startX;
+  const dy = e.clientY - resizeState.startY;
+  
+  let { initialX, initialY, initialWidth, initialHeight, direction } = resizeState;
+  
+  let newX = initialX;
+  let newY = initialY;
+  let newWidth = initialWidth;
+  let newHeight = initialHeight;
+  
+  if (direction.includes('e')) {
+    newWidth = Math.max(MIN_WIDTH, initialWidth + dx);
+  }
+  if (direction.includes('s')) {
+    newHeight = Math.max(MIN_HEIGHT, initialHeight + dy);
+  }
+  if (direction.includes('w')) {
+    newWidth = Math.max(MIN_WIDTH, initialWidth - dx);
+    newX = initialX + (initialWidth - newWidth);
+  }
+  if (direction.includes('n')) {
+    newHeight = Math.max(MIN_HEIGHT, initialHeight - dy);
+    newY = initialY + (initialHeight - newHeight);
+  }
+  
+  updateWindowBounds(props.windowData.id, newX, newY, newWidth, newHeight);
+};
+
+const onResizeEnd = () => {
+  resizeState = null;
+  window.removeEventListener('mousemove', onResizeMove);
+  window.removeEventListener('mouseup', onResizeEnd);
+};
+
+onBeforeUnmount(() => {
+  window.removeEventListener('mousemove', onResizeMove);
+  window.removeEventListener('mouseup', onResizeEnd);
 });
 </script>
 
@@ -403,5 +479,24 @@ const windowStyle = computed(() => {
   .tab-title {
     max-width: 80px; /* Shorter titles on mobile */
   }
+  
+  .resize-handle {
+    display: none;
+  }
 }
+
+/* Resize Handles */
+.resize-handle {
+  position: absolute;
+  z-index: 100;
+}
+.resize-handle.n { top: -4px; left: 10px; right: 10px; height: 8px; cursor: ns-resize; }
+.resize-handle.s { bottom: -4px; left: 10px; right: 10px; height: 8px; cursor: ns-resize; }
+.resize-handle.e { top: 10px; bottom: 10px; right: -4px; width: 8px; cursor: ew-resize; }
+.resize-handle.w { top: 10px; bottom: 10px; left: -4px; width: 8px; cursor: ew-resize; }
+.resize-handle.nw { top: -4px; left: -4px; width: 14px; height: 14px; cursor: nwse-resize; }
+.resize-handle.ne { top: -4px; right: -4px; width: 14px; height: 14px; cursor: nesw-resize; }
+.resize-handle.sw { bottom: -4px; left: -4px; width: 14px; height: 14px; cursor: nesw-resize; }
+.resize-handle.se { bottom: -4px; right: -4px; width: 14px; height: 14px; cursor: nwse-resize; }
+
 </style>
