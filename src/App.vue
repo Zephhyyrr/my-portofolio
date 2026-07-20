@@ -2,7 +2,8 @@
   <v-app class="desktop-environment">
     <LoadingScreen v-if="isLoading" @loaded="handleLoaded" />
 
-    <div v-show="!isLoading" class="desktop-background" :style="{ backgroundImage: `url('${currentBackground}')` }">
+    <div v-show="!isLoading" class="desktop-background">
+      <img :src="currentBackground" class="desktop-bg-image" alt="background" />
       <MenuBar />
       
       <div class="desktop-icons-container">
