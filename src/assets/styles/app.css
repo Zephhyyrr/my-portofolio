@@ -16,8 +16,9 @@ html, body {
 .desktop-background {
   width: 100vw;
   height: 100dvh;
-  background-size: cover;
-  background-position: center;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
   position: relative;
   display: flex;
 }
