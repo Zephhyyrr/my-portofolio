@@ -1,0 +1,212 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+  height: 100dvh;
+  width: 100vw;
+  font-family: 'Inter', sans-serif;
+}
+
+.desktop-environment {
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.desktop-background {
+  width: 100vw;
+  height: 100dvh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+}
+
+.desktop-icons-container {
+  padding: 20px;
+  margin-top: 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  height: calc(100dvh - 48px); /* Adjust for bottom Taskbar */
+  flex-wrap: wrap; 
+}
+
+/* Override Vuetify global styles if they mess up the layout */
+.v-application {
+  background: transparent !important;
+}
+.v-application__wrap {
+  min-height: 100dvh !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body.dark-theme .mac-menubar {
+  background-color: rgba(30, 30, 30, 0.7) !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+body.dark-theme .profile-name,
+body.dark-theme .tray-icon:not(.music-active),
+body.dark-theme .system-tray,
+body.dark-theme .tray-time,
+body.dark-theme .time,
+body.dark-theme .date,
+body.dark-theme .battery-text {
+  color: #ffffff !important;
+}
+
+body.dark-theme .tray-icon:hover {
+  color: #e2e8f0 !important;
+}
+
+body.dark-theme .start-trigger-container:hover,
+body.dark-theme .tray-time:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-theme .start-menu-popup {
+  background-color: rgba(30, 30, 32, 0.85) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.1) inset !important;
+}
+
+body.dark-theme .user-section {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border-top: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+body.dark-theme .app-title, body.dark-theme .section-title, body.dark-theme .first-name, body.dark-theme .last-name {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .browser-window {
+  background-color: rgba(30, 30, 32, 0.85) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.1) inset !important;
+}
+
+body.dark-theme .browser-toolbar {
+  background-color: rgba(40, 40, 42, 0.5) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+body.dark-theme .browser-content {
+  background-color: rgba(30, 30, 32, 0.95) !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .active-tab {
+  background-color: rgba(40, 40, 42, 0.8) !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .inactive-tab {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .address-bar {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .nav-buttons {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .nav-btn:hover {
+  color: #f1f5f9 !important;
+}
+
+body.dark-theme .close-tab:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-theme .new-tab-btn {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .new-tab-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Portofolio & Certificate Cards Dark Mode */
+body.dark-theme .gradient-text {
+    color: #f1f5f9;
+}
+body.dark-theme .subtitle {
+    color: #94a3b8;
+}
+body.dark-theme .project-card, 
+body.dark-theme .certificate-card, 
+body.dark-theme .tech-item {
+    background-color: #1e1e20 !important;
+    border-color: #3f3f46 !important;
+}
+body.dark-theme .project-card .v-card-title,
+body.dark-theme .tech-name,
+body.dark-theme .certificate-card .text-subtitle-1 {
+    color: #f1f5f9 !important;
+}
+body.dark-theme .project-card .v-card-subtitle,
+body.dark-theme .description-text,
+body.dark-theme .certificate-card .text-caption,
+body.dark-theme .certificate-card .text-body-2,
+body.dark-theme .certificate-card .v-card-subtitle {
+    color: #94a3b8 !important;
+}
+body.dark-theme .dialog-card {
+    background-color: #1e1e20 !important;
+}
+body.dark-theme .dialog-title,
+body.dark-theme .dialog-card .text-subtitle-1 {
+    color: #f1f5f9 !important;
+}
+body.dark-theme .dialog-card .v-card-subtitle,
+body.dark-theme .full-description {
+    color: #94a3b8 !important;
+}
+body.dark-theme .tech-chip {
+    background-color: #3f3f46 !important;
+    color: #f1f5f9 !important;
+}
+body.dark-theme .demo-btn {
+    color: #60a5fa !important;
+}
+body.dark-theme .demo-btn:hover {
+    background-color: rgba(96, 165, 250, 0.1) !important;
+}
+
+/* About Me Dark Mode */
+body.dark-theme .subtitle-text {
+    color: #f1f5f9 !important;
+}
+
+/* Dark Theme Global Styles */
+body.dark-theme .desktop-background {
+  background-color: #121212 !important;
+  background-image: none !important;
+}
+
+/* LinkedIn Card Dark Mode */
+body.dark-theme .linkedin-card {
+    background-color: #1e1e20 !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+}
+body.dark-theme .linkedin-card .profile-name {
+    color: #f1f5f9 !important;
+}
+body.dark-theme .linkedin-card .profile-title {
+    color: #94a3b8 !important;
+}
+body.dark-theme .linkedin-card .alert-box {
+    background-color: rgba(37, 99, 235, 0.15) !important;
+    border-color: rgba(37, 99, 235, 0.3) !important;
+    color: #93c5fd !important;
+}

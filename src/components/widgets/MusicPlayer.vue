@@ -131,6 +131,8 @@ const initPlayer = async () => {
       fs: 0,
       modestbranding: 1,
       rel: 0,
+      playsinline: 1,
+      origin: window.location.origin,
     },
     events: {
       onReady: onPlayerReady,
