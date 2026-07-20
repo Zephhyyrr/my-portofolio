@@ -198,11 +198,6 @@ body.dark-theme .subtitle-text {
     color: #f1f5f9 !important;
 }
 
-/* Dark Theme Global Styles */
-body.dark-theme .desktop-background {
-  background-color: #121212 !important;
-}
-
 /* LinkedIn Card Dark Mode */
 body.dark-theme .linkedin-card {
     background-color: #1e1e20 !important;
