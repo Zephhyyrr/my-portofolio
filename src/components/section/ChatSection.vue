@@ -10,6 +10,15 @@
           {{ participantsCount }} participants
         </span>
       </div>
+      
+      <v-spacer></v-spacer>
+      <span 
+        v-if="hasNameSet" 
+        class="edit-name-text"
+        @click="editName"
+      >
+        Edit Name
+      </span>
     </div>
 
     <div class="chat-messages" ref="messagesContainer">
@@ -174,6 +183,10 @@ const confirmName = () => {
   }
 };
 
+const editName = () => {
+  hasNameSet.value = false;
+};
+
 const isOwnMessage = (msg) => {
   return msg.userId === currentUserId.value || (msg.name && userName.value && msg.name.trim() === userName.value.trim());
 };
@@ -257,6 +270,20 @@ const sendMessage = async () => {
 .group-status {
   font-size: 13px;
   opacity: 0.8;
+}
+
+.edit-name-text {
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.9;
+  text-decoration: underline;
+  transition: opacity 0.2s;
+  margin-left: 10px;
+}
+
+.edit-name-text:hover {
+  opacity: 1;
 }
 
 /* Messages Area */
@@ -376,7 +403,10 @@ const sendMessage = async () => {
   border-radius: 50% !important;
   width: 40px !important;
   height: 40px !important;
+  min-width: 40px !important;
+  flex-shrink: 0;
   background-color: #00a884 !important;
+  margin-left: 8px; /* Extra margin to prevent overlapping */
 }
 
 /* Dark Theme Support */
